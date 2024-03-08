@@ -24,6 +24,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+//git add
+
 Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 Route::get('/backendLogout', [LoginController::class, 'backendLogout']);
 Route::get('/unauthorize', [LoginController::class, 'unauthorizePage']);
