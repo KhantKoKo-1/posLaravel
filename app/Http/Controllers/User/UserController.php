@@ -112,11 +112,11 @@ class UserController extends Controller
             if ($response == '200') {
                 $queryLog = DB::getQueryLog();
                 Utility::saveDebugLog($screen, $queryLog);
-                return redirect('sg-backend/account/list')->with(['successMessage' => 'Delete Account Success'])->withInput();
+                return redirect('sg-backend/account/list/cashier')->with(['successMessage' => 'Delete Account Success'])->withInput();
             }
         } catch (\Exception $e) {
             Utility::saveErrorLog($screen, $e -> getMessage());
-            return redirect('sg-backend/account/list')->with(['errorMessage' => 'Delete Account Fail'])->withInput();
+            return redirect('sg-backend/account/list/cashier')->with(['errorMessage' => 'Delete Account Fail'])->withInput();
         }
 
     }
