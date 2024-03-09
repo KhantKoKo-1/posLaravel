@@ -1,8 +1,8 @@
 /**
  * Resize function without multiple trigger
- * 
+ *
  * Usage:
- * $(window).smartresize(function(){  
+ * $(window).smartresize(function(){
  *     // code here
  * });
  */
@@ -16,8 +16,8 @@
             var obj = this, args = arguments;
             function delayed () {
                 if (!execAsap)
-                    func.apply(obj, args); 
-                timeout = null; 
+                    func.apply(obj, args);
+                timeout = null;
             }
 
             if (timeout)
@@ -25,11 +25,11 @@
             else if (execAsap)
                 func.apply(obj, args);
 
-            timeout = setTimeout(delayed, threshold || 100); 
+            timeout = setTimeout(delayed, threshold || 100);
         };
     };
 
-    // smartresize 
+    // smartresize
     jQuery.fn[sr] = function(fn){  return fn ? this.bind('resize', debounce(fn)) : this.trigger(sr); };
 
 })(jQuery,'smartresize');
@@ -606,7 +606,7 @@ function init_starrr() {
 
 function init_JQVmap() {
 
-    //console.log('check init_JQVmap [' + typeof (VectorCanvas) + '][' + typeof (jQuery.fn.vectorMap) + ']' );	
+    //console.log('check init_JQVmap [' + typeof (VectorCanvas) + '][' + typeof (jQuery.fn.vectorMap) + ']' );
 
     if (typeof (jQuery.fn.vectorMap) === 'undefined') { return; }
 
@@ -1715,7 +1715,7 @@ function init_daterangepicker_right() {
 }
 
 function init_daterangepicker_single_call() {
-    
+
     if (typeof ($.fn.daterangepicker) === 'undefined') { return; }
     var start_date = $('#start_date').daterangepicker({
         autoUpdateInput: false,
@@ -1733,8 +1733,8 @@ function init_daterangepicker_single_call() {
             start_date.data('daterangepicker').updateView();
         }
     });
-    
-    var end_date = $('#end_date').daterangepicker({  
+
+    var end_date = $('#end_date').daterangepicker({
         singleDatePicker: true,
         singleClasses: "picker_2",
         autoUpdateInput: false,
@@ -1754,11 +1754,11 @@ function init_daterangepicker_single_call() {
         autoUpdateInput: false,
         singleDatePicker: true,
         singleClasses: "picker_1",
-    }, function (start, end, label) { 
+    }, function (start, end, label) {
         $('#start_date_picker').val(start.format('MM/DD/YYYY'));
     });
-    
-    var end_date_picker = $('#end_date_picker').daterangepicker({  
+
+    var end_date_picker = $('#end_date_picker').daterangepicker({
         singleDatePicker: true,
         singleClasses: "picker_2",
         autoUpdateInput: false,
@@ -1766,20 +1766,21 @@ function init_daterangepicker_single_call() {
         $('#end_date_picker').val(start.format('MM/DD/YYYY'));
     });
 
-    $('#end_date_picker').click(function() {
-        let start = $('#start_date_picker').val();
-        let end = $('#end_date_picker').val();
-        end_date_picker.data('daterangepicker').minDate = moment(start, 'MM/DD/YYYY').add(1, 'days');
-        if (end_date_picker.data('daterangepicker').isShowing) {
+    $('#start_date_picker').on('apply.daterangepicker', function(ev, picker) {
+        var endDate = $('#end_date_picker').val();
+        if (endDate) {
+            end_date_picker.data('daterangepicker').minDate = moment(picker.startDate, 'MM/DD/YYYY').add(1, 'days');
             end_date_picker.data('daterangepicker').updateView();
         }
     });
 
-    $('#start_date_picker').click(function() {
-        let end = $('#end_date_picker').val();
-        start_date_picker.data('daterangepicker').maxDate = moment(end, 'MM/DD/YYYY').subtract(1, 'days');
-        start_date_picker.data('daterangepicker').updateView();
-    }); 
+    $('#end_date_picker').on('apply.daterangepicker', function(ev, picker) {
+        var startDate = $('#start_date_picker').val();
+        if (startDate) {
+            start_date_picker.data('daterangepicker').maxDate = moment(picker.startDate, 'MM/DD/YYYY').subtract(1, 'days');
+            start_date_picker.data('daterangepicker').updateView();
+        }
+    });
 }
 
 
@@ -2231,7 +2232,7 @@ function init_charts() {
                         ]
                     }]
                 };
-    
+
                 var canvasDoughnut = new Chart(ctx, {
                     type: 'doughnut',
                     tooltipFillColor: "rgba(51, 51, 51, 0.55)",
@@ -2305,7 +2306,7 @@ function init_charts() {
                 var totalQuantities = data.map(item => parseInt(item.total_quantity));
                 var itemName = data.map(item => item.item_name);
                 var dateLabels = data.map(item => item.date);
-    
+
                 var chartData = {
                     datasets: [{
                         data: totalQuantities,
@@ -2320,7 +2321,7 @@ function init_charts() {
                     }],
                     labels: itemName
                 };
-    
+
                 var pieChart = new Chart(ctx, {
                     type: 'pie',
                     data: chartData,
@@ -2344,8 +2345,8 @@ function init_charts() {
             }
         });
     }
-    
-    
+
+
 
 
     // PolarArea chart
@@ -5064,4 +5065,4 @@ $(document).ready(function () {
     init_autosize();
     init_autocomplete();
 
-});	
+});

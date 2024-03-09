@@ -23,19 +23,19 @@
                             <div class="field item form-group">
                                 <label for="name" class="col-form-label col-md-3 col-sm-3  label-align">Promotion Name<span class="required">*</span></label>
                                 <div class="col-md-6 col-sm-6">
-                                    <input id="name" class="form-control" name="name" value="{{ old('name',isset($discount) ? $discount->name : '') }}" />   
+                                    <input id="name" class="form-control" name="name" value="{{ old('name',isset($discount) ? $discount->name : '') }}" />
                                 </div>
                                 @if ($errors -> has('name')) <span class="errorMessage">{{$errors->first('name')}}</span> @endif
                             </div>
-                          
+
                             <div class="field item form-group">
                             <label for="discount_type" class="col-form-label col-md-3 col-sm-3  label-align">Discount Type<span class="required">*</span></label>
                                 <div class="col-md-6 col-sm-6">
                                     <div style="margin-top:9px;">
-                                        <input type="radio" id="percentage" name="discount_type" value="percentage" {{ (old('discount_type') == 'percentage' || (isset($discount) && $discount->percentage !== null)) ? 'checked' : '' }} />
+                                        <input checked type="radio" id="percentage" name="discount_type" value="percentage" {{ (old('discount_type') == 'percentage' || (isset($discount) && $discount->percentage !== null)) ? 'checked' : '' }} />
                                         <label for="percentage">Percentage</label>
                                         <input type="radio" id="cash" name="discount_type" value="cash" {{ (old('discount_type') == 'cash' || (isset($discount) && $discount->amount !== null)) ? 'checked' : '' }} />
-                                        <label for="cash">Cash</label>  
+                                        <label for="cash">Cash</label>
                                     </div>
                                 </div>
                                 @if ($errors -> has('discount_type')) <span class="errorMessage">{{$errors->first('discount_type')}}</span> @endif
@@ -47,7 +47,7 @@
                                     </div>
                                     @if ($errors -> has('amount')) <span class="errorMessage">{{$errors->first('amount')}}</span> @endif
                                 </div>
-                                @if(isset($discount))	
+                                @if(isset($discount))
                                     <div class="field item form-group">
                                     <label for="Status" class="col-form-label col-md-3 col-sm-3  label-align">Status<span class="required">*</span></label>
                                     <div class="col-md-6 col-sm-6">
@@ -81,14 +81,14 @@
                                 <label for="Parent" class="col-form-label col-md-3 col-sm-3  label-align">Item<span class="required">*</span></label>
                                 <div class="col-md-6 col-sm-6">
                                     <div class = "row">
-                                    @foreach($items as $item) 
+                                    @foreach($items as $item)
                                         <div class="col-md-5">
                                             <input type="checkbox" class="flat" id="item{{ $item->id }}" name="item[]" value="{{ $item->id }}" {{ (old('item') && in_array($item->id, old('item'))) || (!old('item')) && (isset($discount) && is_array($itemIds) && in_array($item->id, $itemIds)) ? 'checked' : '' }} />
                                             <label for="item{{ $item->id }}">{{ $item->name }}</label>
                                         </div>
                                     @endforeach
 
-                                    </div>             				
+                                    </div>
                                 </div>
                                 @if ($errors -> has('item')) <span class="errorMessage">{{$errors->first('item')}}</span> @endif
                             </div>
@@ -116,8 +116,8 @@
 </div>
 <!-- /page content -->
 
-			
-@include('layouts.backend.partial.footer_start')	
+
+@include('layouts.backend.partial.footer_start')
 @include('layouts.backend.partial.footer_end')
 <!-- /footer end -->
 

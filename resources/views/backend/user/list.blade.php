@@ -13,29 +13,29 @@
                     <div class="clearfix"></div>
                   </div>
                   <form id="accountSwitch" action="{{ url('sg-backend/account/list/') }}" method="GET">
-                      <button type="button" value="admin" class="btn {{ isset($accountType) && $accountType === 'admin' ? 'btn-primary active' : 'btn-default' }}" 
+                      <button type="button" value="admin" class="btn {{ isset($accountType) && $accountType === 'admin' ? 'btn-primary active' : 'btn-default' }}"
                               @if(!isset($accountType) || $accountType !== 'admin') onclick="confirmBox('Are you sure switch admin account type', 'accountSwitch', event)" @endif>
                           Admin
                       </button>
-                      <button type="button" value="cashier" class="btn {{ !isset($accountType) || $accountType === 'cashier' ? 'btn-primary active' : 'btn-default' }}" 
+                      <button type="button" value="cashier" class="btn {{ !isset($accountType) || $accountType === 'cashier' ? 'btn-primary active' : 'btn-default' }}"
                               @if(isset($accountType) && $accountType !== 'cashier') onclick="confirmBox('Are you sure switch cashier account type', 'accountSwitch', event)" @endif>
                           Cashier
                       </button>
                 </form>
                   <div class="x_content">
                   <div class="table-responsive">
-                      <table class="table table-striped jambo_table bulk_action">
+                    <table class="table table-striped jambo_table bulk_action">
                         <thead>
                           <tr class="headings">
                             <th>
                               <input type="checkbox" id="check-all" class="flat">
                             </th>
-                            <th class="column-title col-4"> Name </th>
-                            <th class="column-title col-4"> Status </th>
-                            <th class="column-title no-link last col-4"><span class="nobr">Action</span>
+                            <th class="column-title"> Name </th>
+                            <th class="column-title"> Status</th>
+                            <th class="column-title no-link last"><span class="nobr">Action</span>
                             </th>
                             <th class="bulk-actions" colspan="7">
-                              <a class="antoo" style="color:#fff; font-weight:500;">Bulk Actions 
+                              <a class="antoo" style="color:#fff; font-weight:500;">Bulk Actions
                               ( <span class="action-cnt"> </span> ) <i class="fa fa-chevron-down"></i></a>
                             </th>
                           </tr>
@@ -48,19 +48,19 @@
                                 <input type="checkbox" class="flat" name="table_records">
                               </td>
                               <td class=" ">{{ $account->username }}</td>
-                              <td class=" "> 
+                              <td class=" ">
                               <span class="badge badge-primary" style="display:{{ $account->status === 0 ? 'inline' : 'none' }}">Enable</span>
                               <span class="badge badge-secondary" style="display:{{ $account->status === 1 ? 'inline' : 'none' }}">Disable</span>
                               </td>
                               <td class="last">
                               <div class="row">
-                                <div class='col-4 col-md-3'>
+                                <div class='col-2 col-md-2'>
                                     <a href="{{ url('sg-backend/account/edit/' . $accountType .'/account_info/' . $account->id) }}" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> Edit</a>
                                 </div>
-                                <div class='col-4 col-md-5'>
+                                <div class='col-3 col-md-3'>
                                     <a href="{{ url('sg-backend/account/edit/'. $accountType .'/password/' . $account->id) }}" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> Change Password </a>
                                 </div>
-                                <div class='col-4 col-md-4'>
+                                <div class='col-3 col-md-3'>
                                 <form id="accountDelete" action="{{ url('sg-backend/account/delete') }}" method="POST">
                                   @csrf
                                     <button type="button" class="btn btn-danger btn-xs" onclick="confirmDelete('accountDelete',{{ $account->id }})">
@@ -86,8 +86,9 @@
             </div>
           </div>
         </div>
-      
-@include('layouts.backend.partial.footer_start')	
+
+
+@include('layouts.backend.partial.footer_start')
 
 <!-- /footer end -->
 @include('layouts.backend.partial.footer_end')

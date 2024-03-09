@@ -27,7 +27,8 @@ class DiscountController extends Controller
     {
         $screen = "Show Discount Promotion Form !!";
         try {
-            $items = $this->itemRepository->selectAllItems((bool) false);
+            $items = $this->itemRepository->selectAllItems((bool) true);
+
             $queryLog = DB::getQueryLog();
             Utility::saveDebugLog($screen, $queryLog);
             return view('backend.discount.form', compact('items'));
