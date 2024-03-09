@@ -42,14 +42,14 @@ class SettingStoreRequest extends FormRequest
     public function messages()
     {
         return [
-            'company_name.required'    => 'Please Fill Company Name .',
-            'company_name.unique'      => 'Company name is already exists .',
-            'company_phone.required'   => 'Please Fill Company Phone .',
-            'company_email.required'   => 'Please Fill Company Email .',
-            'company_email.email'      => 'Wrong Format Email .',
+            'company_name.required' => 'Please Fill Company Name .',
+            'company_name.unique' => 'Company name is already exists .',
+            'company_phone.required' => 'Please Fill Company Phone .',
+            'company_email.required' => 'Please Fill Company Email .',
+            'company_email.email' => 'Wrong Format Email .',
             'company_address.required' => 'Please Fill Company Address .',
-            'upload_photo.required'    => 'Please upload photo.',
-            'upload_photo.mimes'       => 'Please fill valid photo type.',
+            'upload_photo.required' => 'Please upload photo.',
+            'upload_photo.mimes' => 'Please fill valid photo type.',
         ];
     }
 }

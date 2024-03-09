@@ -43,6 +43,8 @@ class AccountStoreRequest extends FormRequest
             'password' => ['required', 'min:6', $account_type !== 'admin' ? 'numeric' : ''],
             'confirm_password' => ['required', 'min:6', 'same:password', $account_type !== 'admin' ? 'numeric' : ''],
         ];
+    
+        return $rules;
 
         return $rules;
     }
