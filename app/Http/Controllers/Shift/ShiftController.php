@@ -6,11 +6,11 @@ use App\Utility;
 use App\Exports\DownloadOrders;
 use App\Http\Controllers\Controller;
 use App\Repositories\Shift\ShiftRepositoryInterface;
-use Illuminate\Http\Request;
 use App\Http\Requests\OrderListByShiftRequest;
 use App\Http\Requests\ShiftCheckRequest;
 use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Http\Request;
 
 class ShiftController extends Controller
 {

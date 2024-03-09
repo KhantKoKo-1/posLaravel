@@ -4,10 +4,10 @@ namespace App\Http\Controllers\User;
 
 use App\Utility;
 use App\Http\Controllers\Controller;
-use App\Repositories\User\UserRepositoryInterface;
 use App\Http\Requests\AccountStoreRequest;
 use App\Http\Requests\AccountUpdRequest;
 use App\Http\Requests\AccountDelRequest;
+use App\Repositories\User\UserRepositoryInterface;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 

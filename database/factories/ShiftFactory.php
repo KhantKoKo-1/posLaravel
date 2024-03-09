@@ -3,10 +3,10 @@
 namespace Database\Factories;
 
 use App\Constant;
+use App\Models\Item;
 use App\Models\Shift;
 use App\Models\Order;
 use App\Models\OrderDetail;
-use App\Models\Item;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -30,7 +30,7 @@ class ShiftFactory extends Factory
         $startDate = date('Y-m-d H:i:s', strtotime($startDate . '-'. $this->dateDiff .' day'));
         $this->dateDiff--;
         $endDate = date('Y-m-d H:i:s', strtotime($startDate . ' +8 hours'));
-    
+
         return [
             'start_date_time' => $startDate,
             'end_date_time'   => $endDate,
@@ -44,7 +44,7 @@ class ShiftFactory extends Factory
     public function withOrders($minCount = 1, $maxCount = 5)
     {
         return $this->afterCreating(function (Shift $shift) use ($minCount, $maxCount) {
-            $count = rand($minCount, $maxCount);    
+            $count = rand($minCount, $maxCount);
             for ($i = 0; $i < $count; $i++) {
                 $order = Order::factory()->create([
                     'shift_id'        => $shift->id,
@@ -54,7 +54,7 @@ class ShiftFactory extends Factory
                     'created_at'      => $shift->created_at,
                     'updated_at'      => $shift->updated_at,
                 ]);
-    
+
                 $items     = Item::whereNull('deleted_at')->get()->shuffle()->take(5);
                 $subTotal  = 0;
                 foreach ($items as $item) {
@@ -83,5 +83,5 @@ class ShiftFactory extends Factory
                 $updateOrder->save();
             }
         });
-    }    
+    }
 }

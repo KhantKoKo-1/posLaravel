@@ -3,11 +3,11 @@
 namespace App\Http\Controllers\Category;
 
 use App\Utility;
-use App\Repositories\Category\CategoryRepositoryInterface;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CategoryRequest;
 use App\Http\Requests\CategoryUpdRequest;
 use App\Http\Requests\CategoryDelRequest;
+use App\Repositories\Category\CategoryRepositoryInterface;
 use Illuminate\Support\Facades\DB;
 
 class CategoryController extends Controller

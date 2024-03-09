@@ -3,11 +3,11 @@
 namespace App\Http\Controllers\Item;
 
 use App\Utility;
-use App\Repositories\Item\ItemRepositoryInterface;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ItemStoreRequest;
 use App\Http\Requests\ItemUpdRequest;
 use App\Http\Requests\ItemDelRequest;
+use App\Repositories\Item\ItemRepositoryInterface;
 use Illuminate\Support\Facades\DB;
 
 class ItemController extends Controller

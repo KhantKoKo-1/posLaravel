@@ -4,11 +4,11 @@ namespace App\Http\Controllers\Discount;
 
 use App\Utility;
 use App\Http\Controllers\Controller;
-use App\Repositories\Discount\DiscountRepositoryInterface;
 use App\Http\Requests\DiscountStoreRequest;
 use App\Http\Requests\DiscountUpdRequest;
 use App\Http\Requests\DiscountDelRequest;
 use App\Repositories\Item\ItemRepositoryInterface;
+use App\Repositories\Discount\DiscountRepositoryInterface;
 use Illuminate\Support\Facades\DB;
 
 class DiscountController extends Controller
