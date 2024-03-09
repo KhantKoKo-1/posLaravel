@@ -24,7 +24,7 @@
                                 <label for="name" class="col-form-label col-md-3 col-sm-3  label-align">Category Name<span class="required">*</span></label>
                                 <div class="col-md-6 col-sm-6">
                                     <input id="name" class="form-control" name="name" value="{{ old('name',isset($category) ? $category->name : '') }}" />
-                                    @if ($errors -> has('name')) 
+                                    @if ($errors -> has('name'))
                                     <span class="errorMessage">{{$errors->first('name')}}</span>
                                     @endif
                                 </div>
@@ -39,10 +39,10 @@
                                             Parent Category
                                         </option>
                                     <!-- </optgroup> -->
-                                    {{ parent_category(old('parent_id',isset($category) ? $category->parent_id : '') , [true, false]) }}
+                                    {{ parent_category(old('parent_id',isset($category) ? $category->parent_id : '') , [false, true]) }}
                                 </select>
-                                
-                                @if ($errors -> has('parent_id')) 
+
+                                @if ($errors -> has('parent_id'))
                                     <span class="errorMessage">{{$errors->first('parent_id')}}</span>
                                 @endif
                                 </div>
@@ -64,20 +64,20 @@
                                 <div class="col-md-6 col-sm-6">
                                     <div id="previous_wrapper" style="{{ empty($category) ? 'display:block' : 'display:none' }}">
                                         <label class="chooseFile" for="upload" onclick = "fileInput()">Choose Photo</label>
-                                    </div> 
+                                    </div>
                                     <div id="previous_wrapper-img" style="{{ empty($category) ? 'display:none' : 'display:block' }}">
                                         <div class="vertical-center">
                                             <img src="{{ isset($category) ? asset('/storage/upload/category/' . $category->id .'/' . $category->image) : '' }}" id="image" alt="" style="width:100%;">
                                             <label class="chooseFile" for="upload" onclick = "fileInput()">Choose Photo</label>
                                         </div>
                                     </div>
-                                    @if ($errors -> has('upload_photo')) 
+                                    @if ($errors -> has('upload_photo'))
                                         <span class="errorMessage">{{$errors->first('upload_photo')}}</span>
                                     @endif
-                                </div>    
+                                </div>
                                 </div>
                             </div>
-                            					
+
                             <input class="hide" type="file" id="fileInput" name="upload_photo" onchange = 'previewImage(this)'>
                             <div class="ln_solid">
                                 <div class="form-group">
@@ -94,8 +94,8 @@
         </div>
     </div>
 </div>
-			
-@include('layouts.backend.partial.footer_start')	
+
+@include('layouts.backend.partial.footer_start')
 
 <!-- /footer end -->
 @include('layouts.backend.partial.footer_end')
@@ -105,7 +105,7 @@
 <script>
 	function fileInput() {
 		$('#fileInput').click();
-	} 
+	}
 
 	function previewImage(input) {
         const file = input.files[0];
@@ -113,7 +113,7 @@
 		let allow_file_type = ['jpg','jpeg','svg','png','gif'];
 		if (fileExtension && allow_file_type.includes(fileExtension.toLowerCase())) {
             let reader = new FileReader();
-            reader.onload = function(e) { 
+            reader.onload = function(e) {
                 $('#image').attr('src', e.target.result);
             };
 			$('#previous_wrapper').hide();
@@ -122,7 +122,7 @@
         }else{
 			console.log('File extension is invalid:', fileExtension);
 		}
-	}	
+	}
 </script>
 <!-- jquery end -->
 @include('layouts.backend.partial.footer_end_html')
