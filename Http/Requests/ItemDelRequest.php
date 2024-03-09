@@ -2,9 +2,11 @@
 
 namespace App\Http\Requests;
 
+use App\Rules\ShiftValidationRule;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
-class AdminLoginRequest extends FormRequest
+class ItemDelRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,17 +26,16 @@ class AdminLoginRequest extends FormRequest
     public function rules()
     {
         return [
-            'username' => ['required'],
-            'password' => ['required','min:6'],
+            'id'   => ['required','numeric',new ShiftValidationRule],
         ];
     }
+
 
     public function messages()
     {
         return [
-            'username.required'  => 'Please fill username .',
-            'password.required' => 'Please fill password .',
-            'password.min'      => 'Password must be at least 6 charater .',
+            'id.required'              => 'Item id is required',
+            'id.numeric'               => 'Item id must be numeric',
         ];
     }
 }

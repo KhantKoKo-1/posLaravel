@@ -42,8 +42,8 @@ class ItemStoreRequest extends FormRequest
     public function messages()
     {
         return [
-            'name.required'         => 'Please fill category name .',
-            'name.unique'           => 'Category name is already exists .',
+            'name.required'         => 'Please fill Item name .',
+            'name.unique'           => 'Item name is already exists .',
             'category_id.required'  => 'Please select parent category .',
             'price.required'        => 'Please fill price .',
             'quantity.required'     => 'Please fill quantity .',
