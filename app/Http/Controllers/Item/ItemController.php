@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers\Item;
 
-use App\Utility;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\ItemDelRequest;
 use App\Http\Requests\ItemStoreRequest;
 use App\Http\Requests\ItemUpdRequest;
-use App\Http\Requests\ItemDelRequest;
 use App\Repositories\Item\ItemRepositoryInterface;
+use App\Utility;
 use Illuminate\Support\Facades\DB;
 
 class ItemController extends Controller
@@ -27,7 +27,7 @@ class ItemController extends Controller
             Utility::saveInfoLog($screen);
             return view('backend.item.form');
         } catch (\Exception $e) {
-            Utility::saveErrorLog($screen, $e -> getMessage());
+            Utility::saveErrorLog($screen, $e->getMessage());
             abort(500);
         }
 
@@ -44,7 +44,7 @@ class ItemController extends Controller
                 return redirect('sg-backend/item/list')->with(['successMessage' => 'Create Item Success'])->withInput();
             }
         } catch (\Exception $e) {
-            Utility::saveErrorLog($screen, $e -> getMessage());
+            Utility::saveErrorLog($screen, $e->getMessage());
             abort(500);
             return redirect('sg-backend/item/list')->with(['errorMessage' => ' Create Item Fail'])->withInput();
         }
@@ -60,7 +60,7 @@ class ItemController extends Controller
             Utility::saveDebugLog($screen, $queryLog);
             return view('backend.item.list', compact('items'));
         } catch (\Exception $e) {
-            Utility::saveErrorLog($screen, $e -> getMessage());
+            Utility::saveErrorLog($screen, $e->getMessage());
             abort(500);
         }
 
@@ -76,7 +76,7 @@ class ItemController extends Controller
             }
             return view('backend.Item.form', compact('item'));
         } catch (\Exception $e) {
-            Utility::saveErrorLog($screen, $e -> getMessage());
+            Utility::saveErrorLog($screen, $e->getMessage());
             abort(500);
         }
     }
@@ -92,7 +92,7 @@ class ItemController extends Controller
                 return redirect('sg-backend/item/list')->with(['successMessage' => 'Update Item Success'])->withInput();
             }
         } catch (\Exception $e) {
-            Utility::saveErrorLog($screen, $e -> getMessage());
+            Utility::saveErrorLog($screen, $e->getMessage());
             return redirect('sg-backend/item/list')->with(['errorMessage' => 'Update Item Fail'])->withInput();
         }
     }
@@ -108,7 +108,7 @@ class ItemController extends Controller
                 return redirect('sg-backend/item/list')->with(['successMessage' => 'Delete Item Success'])->withInput();
             }
         } catch (\Exception $e) {
-            Utility::saveErrorLog($screen, $e -> getMessage());
+            Utility::saveErrorLog($screen, $e->getMessage());
             return redirect('sg-backend/item/list')->with(['errorMessage' => 'Delete Item Fail'])->withInput();
         }
 

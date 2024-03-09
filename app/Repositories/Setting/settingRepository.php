@@ -2,10 +2,10 @@
 
 namespace App\Repositories\Setting;
 
-use App\ReturnMessage;
-use App\Utility;
 use App\Models\Setting;
 use App\Repositories\Setting\settingRepositoryInterface;
+use App\ReturnMessage;
+use App\Utility;
 use Illuminate\Support\Facades\DB;
 
 class settingRepository implements settingRepositoryInterface

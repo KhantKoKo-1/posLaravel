@@ -2,17 +2,17 @@
 
 namespace App\Exports;
 
-use App\Utility;
-use Carbon\Carbon;
 use App\Models\Order;
 use App\Models\Shift;
+use App\Repositories\Report\ReportRepositoryInterface;
+use App\Utility;
+use Carbon\Carbon;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\DB;
-use Maatwebsite\Excel\Concerns\WithTitle;
-use Maatwebsite\Excel\Concerns\WithStyles;
-use Maatwebsite\Excel\Concerns\WithHeadings;
 use Maatwebsite\Excel\Concerns\FromCollection;
-use App\Repositories\Report\ReportRepositoryInterface;
+use Maatwebsite\Excel\Concerns\WithHeadings;
+use Maatwebsite\Excel\Concerns\WithStyles;
+use Maatwebsite\Excel\Concerns\WithTitle;
 
 class OrderDailyReport implements FromCollection, WithTitle, WithHeadings,WithStyles
 {

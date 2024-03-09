@@ -2,9 +2,9 @@
 
 namespace App\Http\Requests;
 
-use Illuminate\Foundation\Http\FormRequest;
 use App\Rules\CashAmountValid;
 use App\Rules\PromotionDateRule;
+use Illuminate\Foundation\Http\FormRequest;
 
 class DiscountStoreRequest extends FormRequest
 {

@@ -3,10 +3,10 @@
 namespace App\Http\Requests;
 
 use App\Constant;
-use Illuminate\Validation\Rule;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Validation\Rule;
 
 class AccountUpdRequest extends FormRequest
 {

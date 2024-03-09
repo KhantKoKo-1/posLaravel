@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers\Discount;
 
-use App\Utility;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\DiscountDelRequest;
 use App\Http\Requests\DiscountStoreRequest;
 use App\Http\Requests\DiscountUpdRequest;
-use App\Http\Requests\DiscountDelRequest;
-use App\Repositories\Item\ItemRepositoryInterface;
 use App\Repositories\Discount\DiscountRepositoryInterface;
+use App\Repositories\Item\ItemRepositoryInterface;
+use App\Utility;
 use Illuminate\Support\Facades\DB;
 
 class DiscountController extends Controller
@@ -20,7 +20,7 @@ class DiscountController extends Controller
     {
         DB::connection()->enableQueryLog();
         $this->discountRepository = $discountRepository;
-        $this->itemRepository     = $itemRepository;
+        $this->itemRepository = $itemRepository;
     }
 
     public function getForm()
@@ -33,7 +33,7 @@ class DiscountController extends Controller
             Utility::saveDebugLog($screen, $queryLog);
             return view('backend.discount.form', compact('items'));
         } catch (\Exception $e) {
-            Utility::saveErrorLog($screen, $e -> getMessage());
+            Utility::saveErrorLog($screen, $e->getMessage());
             abort(500);
         }
 
@@ -48,7 +48,7 @@ class DiscountController extends Controller
             Utility::saveDebugLog($screen, $queryLog);
             return view('backend.discount.list', compact('discountData'));
         } catch (\Exception $e) {
-            Utility::saveErrorLog($screen, $e -> getMessage());
+            Utility::saveErrorLog($screen, $e->getMessage());
             abort(500);
         }
 
@@ -65,7 +65,7 @@ class DiscountController extends Controller
                 return redirect('sg-backend/discount/list')->with(['successMessage' => 'Create Promotion Item Success'])->withInput();
             }
         } catch (\Exception $e) {
-            Utility::saveErrorLog($screen, $e -> getMessage());
+            Utility::saveErrorLog($screen, $e->getMessage());
             abort(500);
             return redirect('sg-backend/discount/list')->with(['errorMessage' => ' Create Promotion Item Fail'])->withInput();
         }
@@ -76,15 +76,15 @@ class DiscountController extends Controller
     {
         $screen = "Discount Edit Screen !!";
         try {
-            $items    = $this->itemRepository->selectAllItems((bool) false);
+            $items = $this->itemRepository->selectAllItems((bool) false);
             $discount = $this->discountRepository->selectDiscountPromotion((int) $id);
-            $itemIds  = $this->discountRepository->getItemIds((int) $id);
+            $itemIds = $this->discountRepository->getItemIds((int) $id);
             if ($discount == null) {
                 return response()->view('errors.404', [], 404);
             }
-            return view('backend.discount.form', compact(['discount','items','itemIds']));
+            return view('backend.discount.form', compact(['discount', 'items', 'itemIds']));
         } catch (\Exception $e) {
-            Utility::saveErrorLog($screen, $e -> getMessage());
+            Utility::saveErrorLog($screen, $e->getMessage());
             abort(500);
         }
     }
@@ -100,7 +100,7 @@ class DiscountController extends Controller
                 return redirect('sg-backend/discount/list')->with(['successMessage' => 'Create Promotion Item Success'])->withInput();
             }
         } catch (\Exception $e) {
-            Utility::saveErrorLog($screen, $e -> getMessage());
+            Utility::saveErrorLog($screen, $e->getMessage());
             return redirect('sg-backend/category/list')->with(['errorMessage' => 'Create Promotion Item Fail'])->withInput();
         }
     }
@@ -116,7 +116,7 @@ class DiscountController extends Controller
                 return redirect('sg-backend/discount/list')->with(['successMessage' => 'Delete Promotion Item Success'])->withInput();
             }
         } catch (\Exception $e) {
-            Utility::saveErrorLog($screen, $e -> getMessage());
+            Utility::saveErrorLog($screen, $e->getMessage());
             return redirect('sg-backend/discount/list')->with(['errorMessage' => 'Delete Promotion Item Fail'])->withInput();
         }
     }

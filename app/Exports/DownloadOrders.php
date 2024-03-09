@@ -2,17 +2,17 @@
 
 namespace App\Exports;
 
-use App\Utility;
-use Carbon\Carbon;
 use App\Models\Order;
 use App\Models\Shift;
+use App\Repositories\Shift\ShiftRepositoryInterface;
+use App\Utility;
+use Carbon\Carbon;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\DB;
-use Maatwebsite\Excel\Concerns\WithTitle;
-use Maatwebsite\Excel\Concerns\WithStyles;
-use Maatwebsite\Excel\Concerns\WithHeadings;
 use Maatwebsite\Excel\Concerns\FromCollection;
-use App\Repositories\Shift\ShiftRepositoryInterface;
+use Maatwebsite\Excel\Concerns\WithHeadings;
+use Maatwebsite\Excel\Concerns\WithStyles;
+use Maatwebsite\Excel\Concerns\WithTitle;
 
 class DownloadOrders implements FromCollection, WithTitle, WithHeadings,WithStyles
 {

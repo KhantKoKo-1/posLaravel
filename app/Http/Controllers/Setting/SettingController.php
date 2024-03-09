@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers\Setting;
 
-use App\Utility;
-use App\Models\Setting;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\SettingDelRequest;
 use App\Http\Requests\SettingStoreRequest;
 use App\Http\Requests\SettingUpdRequest;
-use App\Http\Requests\SettingDelRequest;
+use App\Models\Setting;
 use App\Repositories\Setting\SettingRepositoryInterface;
+use App\Utility;
 use Illuminate\Support\Facades\DB;
 
 class SettingController extends Controller

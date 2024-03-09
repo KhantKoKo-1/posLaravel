@@ -5,9 +5,9 @@ namespace App;
 use App\Constant;
 use App\Models\Shift;
 use Carbon\Carbon;
-use Illuminate\Support\Str;
-use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Str;
 use Intervention\Image\ImageManagerStatic as Image;
 
 class Utility

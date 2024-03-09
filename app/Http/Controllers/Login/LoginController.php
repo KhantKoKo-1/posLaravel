@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers\Login;
 
-use App\Utility;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\AdminLoginRequest;
 use App\Http\Requests\CashierLoginRequest;
+use App\Utility;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;

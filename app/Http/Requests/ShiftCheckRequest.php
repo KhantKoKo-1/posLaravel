@@ -26,7 +26,7 @@ class ShiftCheckRequest extends FormRequest
     public function rules()
     {
         return [
-            'id'   => [new OrderVaildationRule()],
+            'id' => [new OrderVaildationRule()],
         ];
     }
 

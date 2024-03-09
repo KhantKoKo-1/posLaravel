@@ -2,15 +2,15 @@
 
 namespace App\Http\Controllers\Shift;
 
-use App\Utility;
 use App\Exports\DownloadOrders;
 use App\Http\Controllers\Controller;
-use App\Repositories\Shift\ShiftRepositoryInterface;
 use App\Http\Requests\OrderListByShiftRequest;
 use App\Http\Requests\ShiftCheckRequest;
-use Maatwebsite\Excel\Facades\Excel;
-use Illuminate\Support\Facades\DB;
+use App\Repositories\Shift\ShiftRepositoryInterface;
+use App\Utility;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Maatwebsite\Excel\Facades\Excel;
 
 class ShiftController extends Controller
 {

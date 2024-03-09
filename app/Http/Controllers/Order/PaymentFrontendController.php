@@ -2,24 +2,24 @@
 
 namespace App\Http\Controllers\Order;
 
-use App\Utility;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Frontend\GetPaymentRequest;
-use App\Repositories\Order\OrderRepositoryInterface;
-use App\Http\Resources\Order\OrderListResource;
-use App\Repositories\Payment\PaymentRepositoryInterface;
 use App\Http\Requests\Frontend\StorePaymentRequest;
+use App\Http\Resources\Order\OrderListResource;
+use App\Repositories\Order\OrderRepositoryInterface;
+use App\Repositories\Payment\PaymentRepositoryInterface;
+use App\Utility;
 use Illuminate\Support\Facades\DB;
 
 class PaymentFrontendController extends Controller
 {
     private $orderRepository;
     private $paymentRepository;
-    
-    public function __construct(OrderRepositoryInterface $orderRepository,PaymentRepositoryInterface $paymentRepository)
+
+    public function __construct(OrderRepositoryInterface $orderRepository, PaymentRepositoryInterface $paymentRepository)
     {
         DB::connection()->enableQueryLog();
-        $this->orderRepository   = $orderRepository;
+        $this->orderRepository = $orderRepository;
         $this->paymentRepository = $paymentRepository;
     }
 
@@ -27,18 +27,18 @@ class PaymentFrontendController extends Controller
     {
         $screen = "Show Get PayMent Form From PaymentFrontendController";
         Utility::saveInfoLog($screen);
-        return view('frontend.payment.form',compact('id'));
+        return view('frontend.payment.form', compact('id'));
     }
     public function getOrderDetailFromPayment(GetPaymentRequest $request)
     {
         $screen = "Show Get Order Detail From PaymentFrontendController";
         try {
-            $order = $this->orderRepository->selectOrdersByOrderId((int) $request->order_id,(int) $request->shift_id);
+            $order = $this->orderRepository->selectOrdersByOrderId((int) $request->order_id, (int) $request->shift_id);
             $queryLog = DB::getQueryLog();
             Utility::saveDebugLog($screen, $queryLog);
             return new OrderListResource($order);
         } catch (\Exception $e) {
-            Utility::saveErrorLog($screen, $e -> getMessage());
+            Utility::saveErrorLog($screen, $e->getMessage());
             abort(500);
         }
     }
@@ -53,7 +53,7 @@ class PaymentFrontendController extends Controller
                 return response()->json(['status' => $response, 'message' => 'success']);
             }
         } catch (\Exception $e) {
-            Utility::saveErrorLog($screen, $e -> getMessage());
+            Utility::saveErrorLog($screen, $e->getMessage());
             abort(500);
         }
     }

@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers\Category;
 
-use App\Utility;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\CategoryDelRequest;
 use App\Http\Requests\CategoryRequest;
 use App\Http\Requests\CategoryUpdRequest;
-use App\Http\Requests\CategoryDelRequest;
 use App\Repositories\Category\CategoryRepositoryInterface;
+use App\Utility;
 use Illuminate\Support\Facades\DB;
 
 class CategoryController extends Controller
@@ -27,7 +27,7 @@ class CategoryController extends Controller
             Utility::saveInfoLog($screen);
             return view('backend.category.form');
         } catch (\Exception $e) {
-            Utility::saveErrorLog($screen, $e -> getMessage());
+            Utility::saveErrorLog($screen, $e->getMessage());
             abort(500);
         }
 
@@ -44,7 +44,7 @@ class CategoryController extends Controller
                 return redirect('sg-backend/category/list')->with(['successMessage' => 'Create Category Success'])->withInput();
             }
         } catch (\Exception $e) {
-            Utility::saveErrorLog($screen, $e -> getMessage());
+            Utility::saveErrorLog($screen, $e->getMessage());
             return redirect('sg-backend/category/list')->with(['errorMessage' => ' Create Category Fail'])->withInput();
         }
 
@@ -59,7 +59,7 @@ class CategoryController extends Controller
             Utility::saveDebugLog($screen, $queryLog);
             return view('backend.category.list', compact('categories'));
         } catch (\Exception $e) {
-            Utility::saveErrorLog($screen, $e -> getMessage());
+            Utility::saveErrorLog($screen, $e->getMessage());
             abort(500);
         }
     }
@@ -74,7 +74,7 @@ class CategoryController extends Controller
             }
             return view('backend.category.form', compact('category'));
         } catch (\Exception $e) {
-            Utility::saveErrorLog($screen, $e -> getMessage());
+            Utility::saveErrorLog($screen, $e->getMessage());
             abort(500);
         }
     }
@@ -90,7 +90,7 @@ class CategoryController extends Controller
                 return redirect('sg-backend/category/list')->with(['successMessage' => 'Update Category Success'])->withInput();
             }
         } catch (\Exception $e) {
-            Utility::saveErrorLog($screen, $e -> getMessage());
+            Utility::saveErrorLog($screen, $e->getMessage());
             return redirect('sg-backend/category/list')->with(['errorMessage' => 'Update Category Fail'])->withInput();
         }
     }
@@ -108,7 +108,7 @@ class CategoryController extends Controller
                 return redirect('sg-backend/category/list')->with(['errorMessage' => 'Delete Category Fail'])->withInput();
             }
         } catch (\Exception $e) {
-            Utility::saveErrorLog($screen, $e -> getMessage());
+            Utility::saveErrorLog($screen, $e->getMessage());
             abort(500);
         }
     }

@@ -2,14 +2,14 @@
 
 namespace App\Http\Controllers\User;
 
-use App\Utility;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\AccountDelRequest;
 use App\Http\Requests\AccountStoreRequest;
 use App\Http\Requests\AccountUpdRequest;
-use App\Http\Requests\AccountDelRequest;
 use App\Repositories\User\UserRepositoryInterface;
-use Illuminate\Support\Facades\DB;
+use App\Utility;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class UserController extends Controller
 {

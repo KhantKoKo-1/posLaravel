@@ -4,9 +4,9 @@ namespace Database\Factories;
 
 use App\Constant;
 use App\Models\Item;
-use App\Models\Shift;
 use App\Models\Order;
 use App\Models\OrderDetail;
+use App\Models\Shift;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
