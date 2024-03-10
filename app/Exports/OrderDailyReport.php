@@ -28,8 +28,8 @@ class OrderDailyReport implements FromCollection, WithTitle, WithHeadings,WithSt
         $this->end                      = null;
     }
 
-    protected $weeklyData;
-    protected $title = "Weekly Report";
+    protected $dailyData;
+    protected $title = "Daily Report";
 
     public function title(): string
     {

@@ -14,6 +14,11 @@
                     <div class="">
                         @if(isset($category))
                             <form action="{{route('updateForm')}}" method="POST" enctype="multipart/form-data" novalidate>
+                                <div>
+                                    <button class="btn btn-sm btn-secondary">
+                                        <a href="/sg-backend/category/list" style="color: white;">Back</a>
+                                    </button>
+                                </div>
                             <input name="id" type="hidden" value="{{  $category->id  }}" />
                         @else
                             <form action="{{route('storeForm')}}" method="POST" enctype="multipart/form-data" novalidate>

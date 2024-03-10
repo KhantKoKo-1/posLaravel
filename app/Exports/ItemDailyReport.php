@@ -30,7 +30,7 @@ class ItemDailyReport implements FromCollection, WithTitle, WithHeadings, WithSt
     }
 
     protected $dailyData;
-    protected $title = "Daily Report";
+    protected $title = "Daily Item Report";
 
     public function title(): string
     {

@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Category;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CategoryDelRequest;
-use App\Http\Requests\CategoryRequest;
+use App\Http\Requests\CategoryStoreRequest;
 use App\Http\Requests\CategoryUpdRequest;
 use App\Repositories\Category\CategoryRepositoryInterface;
 use App\Utility;
@@ -33,7 +33,7 @@ class CategoryController extends Controller
 
     }
 
-    public function store(CategoryRequest $request)
+    public function store(CategoryStoreRequest $request)
     {
         $screen = "Category Post Method !!";
         try {

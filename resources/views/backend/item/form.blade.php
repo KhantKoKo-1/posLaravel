@@ -14,6 +14,11 @@
                     <div class="">
                         @if(isset($item))
                             <form action="{{route('updateItemForm')}}" method="POST" enctype="multipart/form-data" novalidate>
+                                <div>
+                                    <button class="btn btn-sm btn-secondary">
+                                        <a href="/sg-backend/item/list" style="color: white;">Back</a>
+                                    </button>
+                                </div>
                             <input name="id" type="hidden" value="{{  $item->id  }}" />
                         @else
                             <form action="{{route('storeItemForm')}}" method="POST" enctype="multipart/form-data" novalidate>
@@ -24,7 +29,7 @@
                                 <label for="name" class="col-form-label col-md-3 col-sm-3  label-align">Item Name<span class="required">*</span></label>
                                 <div class="col-md-6 col-sm-6">
                                     <input id="name" class="form-control" name="name" value="{{ old('name',isset($item) ? $item->name : '') }}" />
-                                    @if ($errors -> has('name')) 
+                                    @if ($errors -> has('name'))
                                     <span class="errorMessage">{{$errors->first('name')}}</span>
                                     @endif
                                 </div>
@@ -35,8 +40,8 @@
                                 <select id="Parent" name="category_id" class="select2_group form-control">
                                     <option value="" disabled>Choose Category</option>
                                     {{ parent_category(old('category_id', isset($item) ? $item->category_id : ''), [true, false]) }}
-                                </select>    
-                                @if ($errors -> has('category_id')) 
+                                </select>
+                                @if ($errors -> has('category_id'))
                                     <span class="errorMessage">{{$errors->first('category_id')}}</span>
                                 @endif
                                 </div>
@@ -45,7 +50,7 @@
                                 <label for="price" class="col-form-label col-md-3 col-sm-3  label-align">Price<span class="required">*</span></label>
                                 <div class="col-md-6 col-sm-6">
                                     <input id="name" type="number" class="form-control" name="price" value="{{ old('price',isset($item) ? $item->price : '') }}" />
-                                    @if ($errors -> has('price')) 
+                                    @if ($errors -> has('price'))
                                     <span class="errorMessage">{{$errors->first('price')}}</span>
                                     @endif
                                 </div>
@@ -54,7 +59,7 @@
                                 <label for="quantity" class="col-form-label col-md-3 col-sm-3  label-align">Quantity<span class="required">*</span></label>
                                 <div class="col-md-6 col-sm-6">
                                     <input id="quantity" type="number" class="form-control" name="quantity" value="{{ old('quantity',isset($item) ? $item->quantity : '') }}" />
-                                    @if ($errors -> has('quantity')) 
+                                    @if ($errors -> has('quantity'))
                                     <span class="errorMessage">{{$errors->first('quantity')}}</span>
                                     @endif
                                 </div>
@@ -76,20 +81,20 @@
                                 <div class="col-md-6 col-sm-6">
                                     <div id="previous_wrapper" style="{{ empty($item) ? 'display:block' : 'display:none' }}">
                                         <label class="chooseFile" for="upload" onclick = "fileInput()">Choose Photo</label>
-                                    </div> 
+                                    </div>
                                     <div id="previous_wrapper-img" style="{{ empty($item) ? 'display:none' : 'display:block' }}">
                                         <div class="vertical-center">
                                             <img src="{{ isset($item) ? asset('/storage/upload/item/' . $item->id .'/' . $item->image) : '' }}" id="image" alt="" style="width:100%;">
                                             <label class="chooseFile" for="upload" onclick = "fileInput()">Choose Photo</label>
                                         </div>
                                     </div>
-                                    @if ($errors -> has('upload_photo')) 
+                                    @if ($errors -> has('upload_photo'))
                                         <span class="errorMessage">{{$errors->first('upload_photo')}}</span>
                                     @endif
-                                </div>    
                                 </div>
-                            </div>	
-                            					
+                                </div>
+                            </div>
+
                             <input class="hide" type="file" id="fileInput" name="upload_photo" onchange = 'previewImage(this)'>
                             <div class="ln_solid">
                                 <div class="form-group">
@@ -106,8 +111,8 @@
         </div>
     </div>
 </div>
-			
-@include('layouts.backend.partial.footer_start')	
+
+@include('layouts.backend.partial.footer_start')
 
 <!-- /footer end -->
 @include('layouts.backend.partial.footer_end')
@@ -117,7 +122,7 @@
 <script>
 	function fileInput() {
 		$('#fileInput').click();
-	} 
+	}
 
 	function previewImage(input) {
         const file = input.files[0];
@@ -125,7 +130,7 @@
 		let allow_file_type = ['jpg','jpeg','svg','png','gif'];
 		if (fileExtension && allow_file_type.includes(fileExtension.toLowerCase())) {
             let reader = new FileReader();
-            reader.onload = function(e) { 
+            reader.onload = function(e) {
                 $('#image').attr('src', e.target.result);
             };
 			$('#previous_wrapper').hide();
@@ -134,7 +139,7 @@
         }else{
 			console.log('File extension is invalid:', fileExtension);
 		}
-	}	
+	}
 </script>
 <!-- jquery end -->
 @include('layouts.backend.partial.footer_end_html')

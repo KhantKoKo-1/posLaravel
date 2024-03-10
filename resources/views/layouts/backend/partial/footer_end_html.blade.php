@@ -3,13 +3,13 @@
   $(document).ready(function() {
     @if(session('successMessage'))
       new PNotify({
-        title: "Regular Success",
+        title: "Success",
         text: "{{ session('successMessage') }}",
         type: "success",
         styling: "bootstrap3"
       });
   @endif
-  
+
   @if (session('errorMessage'))
   new PNotify({
         title: "Oh No!",

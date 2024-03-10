@@ -42,7 +42,7 @@ class LoginController extends Controller
                 Utility::saveDebugLog($screen, $queryLog);
                 return redirect('/sg-backend/index');
             } else {
-                return redirect()->back()->withErrors(['loginError' => 'username or password is wrong'])->withInput();
+                return redirect()->back()->withErrors(['loginError' => 'Credential does not match.'])->withInput();
             }
         } catch (\Exception $e) {
             Utility::saveErrorLog($screen, $e -> getMessage());

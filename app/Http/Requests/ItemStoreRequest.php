@@ -42,13 +42,13 @@ class ItemStoreRequest extends FormRequest
     public function messages()
     {
         return [
-            'name.required'         => 'Please fill category name .',
-            'name.unique'           => 'Category name is already exists .',
+            'name.required'         => 'Please fill item name .',
+            'name.unique'           => 'Item name is already exists .',
             'category_id.required'  => 'Please select parent category .',
             'price.required'        => 'Please fill price .',
             'quantity.required'     => 'Please fill quantity .',
             'upload_photo.required' => 'Please upload photo.',
-            'upload_photo.mimes'    => 'Please fill valid photo type.',
+            'upload_photo.mimes'    => 'Please select valid photo type.',
         ];
     }
 }

@@ -5,7 +5,7 @@
     <div class="row">
         <div class="col-sm-6 col-md-6">
             <h2>
-                Daily Report
+                Daily Sale Report
             </h2>
             <div id="graph_bar" style="height:400px;"></div>
         </div>
@@ -20,7 +20,7 @@
     <div class="row">
         <div class="col-sm-6 col-md-6">
             <h2>
-                Monthly Report
+                Monthly Sale Report
             </h2>
             <canvas id="lineChart"></canvas>
         </div>

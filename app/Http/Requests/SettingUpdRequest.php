@@ -41,14 +41,14 @@ class SettingUpdRequest extends FormRequest
     public function messages()
     {
         return [
-            'company_name.required' => 'Please Fill Company Name .',
-            'company_name.unique' => 'Company name is already exists .',
-            'company_phone.required' => 'Please Fill Company Phone .',
-            'company_email.required' => 'Please Fill Company Email .',
-            'company_email.email' => 'Wrong Format Email .',
-            'company_address.required' => 'Please Fill Company Address .',
+            'company_name.required'    => 'Please fill company name .',
+            'company_name.unique'      => 'Company name is already exists .',
+            'company_phone.required'   => 'Please fill company phone .',
+            'company_email.required'   => 'Please fill company email .',
+            'company_email.email'      => 'Wrong email format .',
+            'company_address.required' => 'Please fill company cddress .',
             'upload_photo.required_if' => 'Please upload photo.',
-            'upload_photo.mimes' => 'Please fill valid photo type.',
+            'upload_photo.mimes'       => 'Please fill valid photo type.',
         ];
     }
 }

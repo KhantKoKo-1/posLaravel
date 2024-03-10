@@ -14,10 +14,16 @@
                     <div class="x_content">
                         @if(isset($discount))
                             <form action="{{route('updateDiscountForm')}}" method="POST" >
+                                <div>
+                                    <button class="btn btn-sm btn-secondary">
+                                        <a href="/sg-backend/discount/list" style="color: white;">Back</a>
+                                    </button>
+                                </div>
                             <input name="id" type="hidden" value="{{  $discount->id  }}" />
                         @else
                             <form action="{{route('storeDiscountForm')}}" method="POST" >
                         @endif
+
                             @csrf
                             <!-- <span class="section"> Promotion Info</span> -->
                             <div class="field item form-group">
@@ -82,7 +88,7 @@
                                 <div class="col-md-6 col-sm-6">
                                     <div class = "row">
                                     @foreach($items as $item)
-                                        <div class="col-md-5">
+                                        <div class="col-md-4">
                                             <input type="checkbox" class="flat" id="item{{ $item->id }}" name="item[]" value="{{ $item->id }}" {{ (old('item') && in_array($item->id, old('item'))) || (!old('item')) && (isset($discount) && is_array($itemIds) && in_array($item->id, $itemIds)) ? 'checked' : '' }} />
                                             <label for="item{{ $item->id }}">{{ $item->name }}</label>
                                         </div>

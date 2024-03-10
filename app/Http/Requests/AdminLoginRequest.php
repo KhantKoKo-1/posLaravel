@@ -32,7 +32,7 @@ class AdminLoginRequest extends FormRequest
     public function messages()
     {
         return [
-            'username.required'  => 'Please fill username .',
+            'username.required' => 'Username and password cannot be null .',
             'password.required' => 'Please fill password .',
             'password.min'      => 'Password must be at least 6 charater .',
         ];

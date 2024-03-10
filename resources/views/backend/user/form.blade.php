@@ -13,11 +13,11 @@
                     </div>
                     @if(!isset($account))
                     <form id="accountSwitch" action="{{ url('sg-backend/account/store/') }}" method="GET">
-                        <button type="button" value="admin" class="btn {{ isset($accountType) && $accountType === 'admin' ? 'btn-primary active' : 'btn-default' }}" 
+                        <button type="button" value="admin" class="btn {{ isset($accountType) && $accountType === 'admin' ? 'btn-primary active' : 'btn-default' }}"
                                 @if(!isset($accountType) || $accountType !== 'admin') onclick="confirmBox('Are you sure switch admin account type', 'accountSwitch', event)" @endif>
                             Admin
                         </button>
-                        <button type="button" value="cashier" class="btn {{ !isset($accountType) || $accountType === 'cashier' ? 'btn-primary active' : 'btn-default' }}" 
+                        <button type="button" value="cashier" class="btn {{ !isset($accountType) || $accountType === 'cashier' ? 'btn-primary active' : 'btn-default' }}"
                                 @if(isset($accountType) && $accountType !== 'cashier') onclick="confirmBox('Are you sure switch cashier account type', 'accountSwitch', event)" @endif>
                             Cashier
                         </button>
@@ -26,6 +26,11 @@
                     <div class="">
                         @if(isset($account))
                             <form action="{{route('updateAccountForm')}}" method="POST" enctype="multipart/form-data" novalidate >
+                                <div>
+                                    <button class="btn btn-sm btn-secondary">
+                                        <a href="/sg-backend/item/list" style="color: white;">Back</a>
+                                    </button>
+                                </div>
                             <input name="id" type="hidden" value="{{  $account->id  }}" />
                         @else
                             <form action="{{route('storeAccountForm')}}" method="POST" enctype="multipart/form-data" novalidate >
@@ -45,7 +50,7 @@
                                 <div class="col-md-6 col-sm-6">
                                     <input id="username" type='{{ !isset($accountType) || $accountType !== 'admin' ? 'number' : '' }}' class="form-control" name="username" value="{{ old('username',isset($account) ? $account->username : '') }}" />
                                 </div>
-                                @if ($errors -> has('username')) 
+                                @if ($errors -> has('username'))
                                     <span class="errorMessage">{{$errors->first('username')}}</span>
                                 @endif
                             </div>
@@ -56,7 +61,7 @@
                                 <div class="col-md-6 col-sm-6">
                                 <input id="old_password" class="form-control" name="old_password" value="{{old('old_password')}}" />
                                 </div>
-                                @if ($errors -> has('old_password')) 
+                                @if ($errors -> has('old_password'))
                                     <span class="errorMessage">{{$errors->first('old_password')}}</span>
                                 @endif
                             </div>
@@ -67,7 +72,7 @@
                                 <div class="col-md-6 col-sm-6">
                                 <input type="password" id="password" class="form-control" name="password" value="" />
                                 </div>
-                            @if ($errors -> has('password')) 
+                            @if ($errors -> has('password'))
                                 <span class="errorMessage">{{$errors->first('password')}}</span>
                             @endif
                             </div>
@@ -76,9 +81,9 @@
                                 <div class="col-md-6 col-sm-6">
                                 <input type="password" id="confirm_password" class="form-control" name="confirm_password" value="" />
                                 </div>
-                            @if ($errors -> has('confirm_password')) 
+                            @if ($errors -> has('confirm_password'))
                                 <span class="errorMessage">{{$errors->first('confirm_password')}}</span>
-                            @endif    
+                            @endif
                             </div>
                             @endif
                             @if (isset($account) && $editType == 'account_info' )
@@ -110,8 +115,8 @@
         </div>
     </div>
 </div>
-			
-@include('layouts.backend.partial.footer_start')	
+
+@include('layouts.backend.partial.footer_start')
 
 <!-- /footer end -->
 @include('layouts.backend.partial.footer_end')

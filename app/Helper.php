@@ -115,7 +115,7 @@ if (!function_exists('parent_category')) {
     if (!function_exists('dateFormatmdY')) {
         function dateFormatmdY($date)
         {
-            $formatted_date = Carbon::createFromFormat('Y-m-d H:i:s', $date)->format('m/d/Y');
+            $formatted_date = Carbon::createFromFormat('Y-m-d', $date)->format('m/d/Y');
             return $formatted_date;
         }
     }

@@ -51,14 +51,14 @@ class DiscountUpdRequest extends FormRequest
             'discount_type.required'  => 'Please choose discount type .',
             'amount.required'         => 'Please fill discount amount .',
             'amount.numeric'          => 'Discount amount must be numeric .',
-            'amount.max'              => 'Discount percentage is greater than 100% .',
+            'amount.max'              => 'Discount percentage must between 0 and 100% .',
             'start_date.required'     => 'Please fill discount start date .',
-            'start_date.date'         => 'Please fill invalid date format .',
+            'start_date.date'         => 'Please fill valid date format .',
             'end_date.required'       => 'Please fill discount end date .',
-            'end_date.date'           => 'Please fill invalid date format .',
+            'end_date.date'           => 'Please fill valid date format .',
             'end_date.after'          => 'End date is greater than start date .',
             'item.required'           => 'Please choose discount item .',
-            'item.array'              => 'Discount item must be array.',
+            // 'item.array'              => 'Discount item must be array.',
             // 'description.required'    => 'Please choose discount item .',
         ];
     }
