@@ -24,8 +24,8 @@ class CashierLoginRequest extends FormRequest
     public function rules()
     {
         return [
-            'username' => ['required','numeric'],
-            'password' => ['required', 'min:6'],
+            'username' => ['required', 'numeric'],
+            'password' => ['required', 'numeric', 'digits:6' ],
         ];
     }
 
@@ -33,10 +33,10 @@ class CashierLoginRequest extends FormRequest
     {
         return [
             'username.required' => 'Please fill username .',
-            'username.numeric'  => 'User name must be numeric .',
+            'username.numeric'  => 'Username must be numeric .',
             'password.required' => 'Please fill password .',
-            // 'password.numeric'  => 'Password must be numeric .',
-            'password.min'      => 'The password must be at least 6 characters long."',
+            'password.numeric'  => 'Password must be numeric .',
+            'password.digits'   => 'The password must be exactly 6 digits.',
         ];
     }
 }

@@ -104,13 +104,15 @@ table, table tr, table td {
     width:350px;
 }
 
-.notification {
-    position: fixed;
-    margin-top: 10%;
-    left: 48.5%;
-    transform: translate(-50%, -50%);
+.username-noti {
+    margin-top: 7.5%;
+    left: 60%;
 }
 
+.password-noti {
+    margin-top: 10.5%;
+    left: 60%;
+}
 
 
 

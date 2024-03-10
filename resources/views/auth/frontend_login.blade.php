@@ -65,30 +65,31 @@
 </section>
 </body>
 <script src="{{ asset('asset/pnotify/dist/pnotify.js') }}"></script>
-@if ($errors -> has('username')) 
 <script>
-    new PNotify({
-        title: "Oh No!",
-        text: "{{ $errors->first('username') }}",
-        type: "error",
-        styling: "bootstrap3",
-        width: '300px', // Adjust the width as needed
-        addclass: 'notification'
-    });
+    @if ($errors->has('username') && $errors->has('password'))
+        new PNotify({
+            text: "{{ $errors->first('username') }} \n \n{{ $errors->first('password') }}",
+            type: "error",
+            styling: "bootstrap3",
+            addclass: 'username-noti'
+        });
+    @elseif ($errors->has('password'))
+        new PNotify({
+            text: "{{ $errors->first('password') }}",
+            type: "error",
+            styling: "bootstrap3",
+            addclass: 'password-noti'
+        });
+    @elseif ($errors->has('username'))
+        new PNotify({
+            text: "{{ $errors->first('username') }}",
+            type: "error",
+            styling: "bootstrap3",
+            addclass: 'username-noti',
+        });
+    @endif
 </script>
-@endif
-@if ($errors -> has('password')) 
-<script>
-    new PNotify({
-        title: "Oh No!",
-        text: "{{ $errors->first('password') }}",
-        type: "error",
-        styling: "bootstrap3",
-        width: '300px', // Adjust the width as needed
-        addclass: 'notification'
-    });
-</script>
-@endif
+
 </script>
 <script src="{{ asset('asset/js/page/login.js') }}"></script>
 </html>
