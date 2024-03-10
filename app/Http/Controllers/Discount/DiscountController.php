@@ -76,7 +76,7 @@ class DiscountController extends Controller
     {
         $screen = "Discount Edit Screen !!";
         try {
-            $items = $this->itemRepository->selectAllItems((bool) false);
+            $items = $this->itemRepository->selectAllItems((bool) true);
             $discount = $this->discountRepository->selectDiscountPromotion((int) $id);
             $itemIds = $this->discountRepository->getItemIds((int) $id);
             if ($discount == null) {
