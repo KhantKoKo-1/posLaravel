@@ -58,7 +58,7 @@
                     <td><button type="button" class="number-btn fl-right enter-btn" ng-click="Login()">Enter</button></td>
                 </tr>
             </table>
-            <input type="hidden" name ="form_sub" value = "1" /> 
+            <input type="hidden" name ="form_sub" value = "1" />
             </form>
         </div>
     </div>
@@ -80,12 +80,20 @@
             styling: "bootstrap3",
             addclass: 'password-noti'
         });
+
     @elseif ($errors->has('username'))
         new PNotify({
             text: "{{ $errors->first('username') }}",
             type: "error",
             styling: "bootstrap3",
             addclass: 'username-noti',
+        });
+        @elseif ($errors->has('loginError'))
+        new PNotify({
+            text: "{{ $errors->first('loginError') }}",
+            type: "error",
+            styling: "bootstrap3",
+            addclass: 'username-noti'
         });
     @endif
 </script>

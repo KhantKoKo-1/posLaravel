@@ -127,7 +127,7 @@ class LoginController extends Controller
                 Utility::saveDebugLog($screen, $queryLog);
                 return redirect('/home');
             } else {
-                return redirect()->back()->withErrors(['loginError' => 'username or password is wrong'])->withInput();
+                return redirect()->back()->withErrors(['loginError' => 'Username or password is wrong'])->withInput();
             }
         } catch (\Exception $e) {
             Utility::saveErrorLog($screen, $e -> getMessage());

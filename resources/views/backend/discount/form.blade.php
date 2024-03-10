@@ -89,15 +89,17 @@
                                     <div class = "row">
                                     @foreach($items as $item)
                                         <div class="col-md-4">
-                                            <input type="checkbox" class="flat" id="item{{ $item->id }}" name="item[]" value="{{ $item->id }}" {{ (old('item') && in_array($item->id, old('item'))) || (!old('item')) && (isset($discount) && is_array($itemIds) && in_array($item->id, $itemIds)) ? 'checked' : '' }} />
+                                            <input type="checkbox" class="flat" id="item{{ $item->id }}" name="item[]"
+                                             value="{{ $item->id }}" {{ (old('item') && in_array($item->id, old('item'))) ||
+                                            (!old('item')) && (isset($discount) && is_array($itemIds) && in_array($item->id, $itemIds)) ? 'checked' : '' }} />
                                             <label for="item{{ $item->id }}">{{ $item->name }}</label>
                                         </div>
                                     @endforeach
-
                                     </div>
                                 </div>
                                 @if ($errors -> has('item')) <span class="errorMessage">{{$errors->first('item')}}</span> @endif
                             </div>
+
                             <div class="field item form-group">
                             <label for="single_cal2" class="col-form-label col-md-3 col-sm-3  label-align">Description<span class="required">*</span></label>
                             <div class="col-md-6 col-sm-6">
