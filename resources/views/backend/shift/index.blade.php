@@ -36,6 +36,7 @@
                             </th>
                             <th class="column-title">Start Date Time </th>
                             <th class="column-title">End Date Time </th>
+                            <th class="column-title col-2"> Process </th>
                             <th class="column-title no-link last"><span class="nobr">Action</span>
                             </th>
                             <th class="bulk-actions" colspan="7">
@@ -52,6 +53,10 @@
                             </td>
                             <td class=" ">{{ $shift->start_date_time }}</td>
                             <td class=" ">{{ $shift->end_date_time }}</td>
+                            <td class=" ">
+                                <span class="badge badge-primary" style="display: {{ $shift->end_date_time == 0 ? 'block' : 'none' }}">open</span>
+                                <span class="badge badge-danger" style="display: {{ $shift->end_date_time!= 0 ? 'block' : 'none' }}">close</span>
+                          </td>
                             <td class="last">
                             <a href="{{ url('sg-backend/shift/order-list/' . $shift->id) }}" class="btn btn-info btn-xs" style="width:50%;"><i class="fa fa-pencil"></i> View Order List </a>
                             </tr>
