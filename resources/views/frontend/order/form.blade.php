@@ -15,7 +15,7 @@
         <img src="{{asset('asset/images/frontend/payment/previous_img.png')}}" alt="Previous" class="heightLine_06">
     </button>
 <div class="row">
-	<div class="col-md-8 card padding-y-sm card " >	
+	<div class="col-md-8 card padding-y-sm card " >
 		<div class="input-group" style="margin-bottom: 10px;">
 		<button class="btn btn-primary" ng-click="returnBack()" >
 			<img src="{{asset('asset/images/frontend/payment/previous_img.png')}}" alt="Previous" class="heightLine_06" />
@@ -90,31 +90,31 @@
 	<figcaption class="media-body">
 		<h6 class="title text-truncate">@{{itemData.name}}</h6>
 	</figcaption>
-</figure> 
+</figure>
 </td>
-	<td class="text-center"> 
+	<td class="text-center">
 		<div class="m-btn-group m-btn-group--pill btn-group mr-2" role="group" aria-label="...">
 			<button type="button" class="m-btn btn btn-sm btn-default" ng-click ="itemQuantity('minus',itemData.id)"><i class="fa fa-minus fa-sm"></i></button>
 			<button type="button" class="m-btn btn btn-sm btn-default" disabled>@{{itemData.quantity}}</button>
 			<button type="button" class="m-btn btn btn-sm btn-default" ng-click ="itemQuantity('plus',itemData.id)"><i class="fa fa-plus"></i></button>
 		</div>
 	</td>
-	<td> 
-		<div class="price-wrap"> 
-			<var class="price">@{{itemData.price}}</var> 
+	<td>
+		<div class="price-wrap">
+			<var class="price">@{{itemData.price}}</var>
 		</div> <!-- price-wrap .// -->
 	</td>
-	<td> 
-		<div class="price-wrap"> 
-			<var class="price">@{{itemData.discount_amount}}</var> 
+	<td>
+		<div class="price-wrap">
+			<var class="price">@{{itemData.discount_amount}}</var>
 		</div> <!-- price-wrap .// -->
 	</td>
-	<td> 
-		<div class="price-wrap"> 
-			<var class="price">@{{itemData.total_amount}}</var> 
+	<td>
+		<div class="price-wrap">
+			<var class="price">@{{itemData.total_amount}}</var>
 		</div> <!-- price-wrap .// -->
 	</td>
-	<td class="text-right"> 
+	<td class="text-right">
 		<button href="" class="btn btn-outline-danger btn-sm" ng-click="cancelItem(itemData.id)"> <i class="fa fa-trash"></i></button>
 	</td>
 </tr>
@@ -136,9 +136,9 @@
 <div class="row">
 	<div class="col-md-5" style="margin-left:60%;">
 	    @if(isset($id))
-			<a href="#" class="btn  btn-primary btn-lg btn-block" ng-click = "orderConfirm('edit',{{$id}})"><i class="fa fa-shopping-bag"></i> Order </a>
+			<a href="#" class="btn  btn-primary btn-lg btn-block" ng-click = "orderConfirm('edit',{{$id}})" ng-show="haveItem" ng-disabled="!haveItem" ><i class="fa fa-shopping-bag"></i> Order </a>
 		@else
-			<a href="#" class="btn  btn-primary btn-lg btn-block" ng-click = "orderConfirm('create')"><i class="fa fa-shopping-bag"></i> Order </a>
+			<a href="#" class="btn  btn-primary btn-lg btn-block" ng-click = "orderConfirm('create')" ng-show="haveItem" ng-disabled="!haveItem"><i class="fa fa-shopping-bag"></i> Order </a>
 		@endif
 	</div>
 </div>

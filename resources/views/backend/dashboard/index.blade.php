@@ -11,7 +11,7 @@
         </div>
         <div class="col-sm-6 col-md-6">
             <h2>
-                Daily Best Seller Item Report
+                Daily Best Selling Item Report
             </h2>
             <canvas id="pieChart"></canvas>
         </div>
@@ -26,7 +26,7 @@
         </div>
         <div class="col-sm-6 col-md-6">
             <h2>
-                Monthly Best Seller Item Report
+                Monthly Best Selling Item Report
             </h2>
             <canvas id="canvasDoughnut"></canvas>
         </div>

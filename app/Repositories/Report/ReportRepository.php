@@ -118,7 +118,7 @@ class ReportRepository implements ReportRepositoryInterface
             ->whereNull('payment_history.deleted_at')
             ->whereNull('order.deleted_at')
             ->whereNull('shift.deleted_at')
-            ->whereDate('shift.start_date_time', '2024-03-06')
+            ->whereDate('shift.start_date_time', $shift_date)
             ->groupBy('payment_history.cash')
             ->get();
         return $payments;

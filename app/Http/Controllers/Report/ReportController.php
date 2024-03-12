@@ -119,7 +119,7 @@ class ReportController extends Controller
     {
         $screen = "Payment History Report!!";
         try {
-            $shift_date = $request->date;
+            $shift_date = $request->shift_date;
             $payments = $this->reportRepository->paymentHistoryLog($shift_date);
             Utility::saveInfoLog($screen);
             return view('backend.report.payment_history', compact('payments', 'shift_date'));
