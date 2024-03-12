@@ -88,13 +88,13 @@
             styling: "bootstrap3",
             addclass: 'username-noti',
         });
-        @elseif ($errors->has('loginError'))
-        new PNotify({
-            text: "{{ $errors->first('loginError') }}",
-            type: "error",
-            styling: "bootstrap3",
-            addclass: 'username-noti'
-        });
+    @elseif ($errors->has('loginError'))
+    new PNotify({
+        text: "{{ $errors->first('loginError') }}",
+        type: "error",
+        styling: "bootstrap3",
+        addclass: 'username-noti'
+    });
     @endif
 </script>
 

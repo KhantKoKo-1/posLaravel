@@ -69,5 +69,4 @@ class ReturnMessage
     public const UPGRADE_REQUIRED = 426;
     public const USE_PROXY = 305;
     public const VARIANT_ALSO_NEGOTIATES = 506;
-
 }

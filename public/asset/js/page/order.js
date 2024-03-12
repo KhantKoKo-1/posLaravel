@@ -1,6 +1,6 @@
 var app = angular.module('myApp', []);
 app.controller('myCtrl', function($scope,$http) {
-   $scope.base_url = base_url; 
+   $scope.base_url = base_url;
    $scope.categories = [];
    $scope.items = [];
    $scope.allItems = [];
@@ -113,7 +113,7 @@ app.controller('myCtrl', function($scope,$http) {
         .catch(function(error) {
             console.error('Error fetching data:', error);
         });
-       
+
    }
 
    $scope.itemQuantity = function(type, itemId) {
@@ -127,7 +127,7 @@ app.controller('myCtrl', function($scope,$http) {
     });
     $scope.calculationSubTotable();
 };
-   
+
    $scope.cancelItem = function(itemId) {
     let removedItem = $scope.itemDatas.find(item => itemId === item.id);
     if (removedItem) {
@@ -139,7 +139,11 @@ app.controller('myCtrl', function($scope,$http) {
 $scope.calculationSubTotable = function() {
    $scope.subTotal = 0;
    $scope.totalDiscount= 0;
-   console.log( $scope.itemDatas)
+   if($scope.itemDatas.length === 0) {
+        $scope.haveItem = false;
+    }else {
+        $scope.haveItem = true;
+    }
    for(i = 0; i < $scope.itemDatas.length ; i++){
         $scope.subTotal += $scope.itemDatas[i].total_amount;
         $scope.totalDiscount += parseInt($scope.itemDatas[i].discount_amount);
@@ -151,7 +155,7 @@ $scope.searchItem = function() {
     if(searchData == ''){
         $scope.showCategories = true;
         $scope.showItem = false;
-        $scope.fetchCategory(0);  
+        $scope.fetchCategory(0);
     }else{
         alert('here')
         $scope.showCategories = false;
@@ -160,7 +164,7 @@ $scope.searchItem = function() {
         $scope.items = $scope.allItems.filter(item => {
             console.log("item.name");
             return item.code_no.startsWith(searchData) || item.name.startsWith(searchData);
-        });        
+        });
     }
 };
 
@@ -169,13 +173,13 @@ $scope.searchItem = function() {
     if(searchData == ''){
         $scope.showCategories = true;
         $scope.showItem = false;
-        $scope.fetchCategory(0);  
+        $scope.fetchCategory(0);
     }else{
         $scope.showCategories = false;
         $scope.showItem = true;
         $scope.items = $scope.allItems.filter(item => {
             return item.code_no.startsWith(searchData) || item.name.toLowerCase().startsWith(searchData.toLowerCase());
-        });     
+        });
     }
 };
 $scope.returnBack = function() {
@@ -231,7 +235,7 @@ $scope.fetchOrderItems = function(orderId) {
             $scope.itemDatas.map(function(item) {
                 $scope.subDiscount[item.id] = item.discount_amount;
             });
-            
+
             for(i = 0; i < $scope.itemDatas.length ; i++){
                 $scope.itemDatas[i].discount_amount *= $scope.itemDatas[i].quantity;
                 $scope.itemDatas[i].total_amount *= $scope.itemDatas[i].quantity;
@@ -254,7 +258,7 @@ $scope.editOrder = function(orderId) {
                 order_id: orderId };
     const url = base_url + 'api/order-edit';
     $http.post(url,data)
-    .then(function(response) { 
+    .then(function(response) {
         if (response.data.status === 200) {
             window.location.href = base_url + "order-list";
         }
