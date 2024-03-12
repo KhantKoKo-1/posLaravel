@@ -37,6 +37,7 @@ class LoginController extends Controller
                             'username' => $request -> username,
                             'password' => $request -> password,
                             ]);
+
             if ($credentials) {
                 $queryLog = DB::getQueryLog();
                 Utility::saveDebugLog($screen, $queryLog);
@@ -61,6 +62,7 @@ class LoginController extends Controller
             abort(500);
         }
     }
+
     public function shiftClosePage()
     {
         $screen = "Show Shift Close Page";
@@ -121,7 +123,6 @@ class LoginController extends Controller
                             'password' => $request -> password,
                             ]
             );
-
             if ($credentials) {
                 $queryLog = DB::getQueryLog();
                 Utility::saveDebugLog($screen, $queryLog);

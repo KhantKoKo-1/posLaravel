@@ -10,5 +10,4 @@ interface CategoryRepositoryInterface
     public function selectCategory(int $id);
     public function selectCategoryByParent(int $parent_id);
     public function updateCategory(array $data);
-
 }

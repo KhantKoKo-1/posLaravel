@@ -38,9 +38,9 @@ class Utility
     public static function saveCreated(array $data, bool $cashier = false)
     {
         if ($cashier) {
-            $user_id  = Auth::guard('cashier')->user()->id;
+            $user_id = Auth::guard('cashier')->user()->id;
         } else {
-            $user_id  = Auth::guard('admin')->user()->id;
+            $user_id = Auth::guard('admin')->user()->id;
         }
         $data['created_by'] = $user_id;
         $data['updated_by'] = $user_id;
@@ -50,9 +50,9 @@ class Utility
     public static function saveUpdated(array $data, bool $cashier = false)
     {
         if ($cashier) {
-            $user_id  = Auth::guard('cashier')->user()->id;
+            $user_id = Auth::guard('cashier')->user()->id;
         } else {
-            $user_id  = Auth::guard('admin')->user()->id;
+            $user_id = Auth::guard('admin')->user()->id;
         }
         $data['updated_by'] = $user_id;
         return $data;
@@ -62,9 +62,9 @@ class Utility
     {
         $today_dt = date('Y:m:d H:i:s');
         if ($cashier) {
-            $user_id  = Auth::guard('cashier')->user()->id;
+            $user_id = Auth::guard('cashier')->user()->id;
         } else {
-            $user_id  = Auth::guard('admin')->user()->id;
+            $user_id = Auth::guard('admin')->user()->id;
         }
         $data['deleted_by'] = $user_id;
         $data['deleted_at'] = $today_dt;
@@ -75,8 +75,8 @@ class Utility
     {
         $originalFileName = $file->getClientOriginalName();
         $fileNameWithoutExtension = pathinfo($originalFileName, PATHINFO_FILENAME);
-        $extension        = $file->getClientOriginalExtension();
-        $unique_name      = $fileNameWithoutExtension . "_" . strftime('%H%M%S') . "_" . uniqid() . "." . $extension;
+        $extension   = $file->getClientOriginalExtension();
+        $unique_name = $fileNameWithoutExtension . "_" . strftime('%H%M%S') . "_" . uniqid() . "." . $extension;
         return $unique_name;
     }
 
@@ -134,14 +134,12 @@ class Utility
             $date = $endDate;
             $dateDiff = $startDate->diffInDays($endDate);
         }
-
         for ($i = 0; $i < $dateDiff ; $i++) {
             $dates[] = $date->subDay()->format('Y-m-d');
         }
         $dates = array_reverse($dates);
         return $dates;
     }
-
 
     public static function monthlySaleDates($start_month, $end_month)
     {
@@ -164,5 +162,4 @@ class Utility
         $months = array_reverse($months);
         return $months;
     }
-
 }

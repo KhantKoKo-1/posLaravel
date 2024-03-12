@@ -50,7 +50,6 @@ class ItemRepository implements ItemRepositoryInterface
                 ->paginate(5);
         }
         return $items;
-
     }
 
     public function selectItem(bool $order_item, int $id)
@@ -105,5 +104,4 @@ class ItemRepository implements ItemRepositoryInterface
         }
         return $response;
     }
-
 }

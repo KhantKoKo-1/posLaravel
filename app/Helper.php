@@ -8,14 +8,12 @@ use Illuminate\Support\Facades\Auth;
 if (!function_exists('parent_category')) {
     function parent_category($parent_id, $screen)
     {
-
         global $count;
         $count = 1;
         $categories = Category::where('parent_id', 0)
                     ->where('status', Constant::ENABLE_STATUS)
                     ->whereNull('deleted_at')
                     ->get();
-
         foreach ($categories as $category) {
             $enabled = '';
             $category_id = $category['id'];
@@ -41,7 +39,6 @@ if (!function_exists('parent_category')) {
     if (!function_exists('child_category')) {
         function child_category($parent_id, $child_parent_id, $count, $screen)
         {
-
             $count++;
             $dash = "";
             $child_categories = Category::WHERE('parent_id', $parent_id)
@@ -72,7 +69,6 @@ if (!function_exists('parent_category')) {
                 echo "<option name='parent_id' value='$child_category_id' $selectedAttribute $enabled>$dash $child_category_name</option>";
                 child_category($child_category_id, $child_parent_id, $count, $screen);
             }
-
         }
     }
 
@@ -95,7 +91,6 @@ if (!function_exists('parent_category')) {
                     ->where('status', Constant::ENABLE_STATUS)
                     ->whereNull('deleted_at')
                     ->count();
-
             return $total;
         }
     }
@@ -131,7 +126,7 @@ if (!function_exists('parent_category')) {
     if (!function_exists('convertTimeFormatHis')) {
         function convertTimeFormatHis($time)
         {
-            $time = Carbon::now()->format('H:i:s');
+            $time           = Carbon::now()->format('H:i:s');
             $formatted_time = Carbon::createFromFormat('H:i:s', $time)->format('h:i A');
             return $formatted_time;
         }
@@ -141,9 +136,9 @@ if (!function_exists('parent_category')) {
         function getLoginUser($cashier = false)
         {
             if ($cashier) {
-                $user_name    = Auth::guard('cashier')->user()->username;
+                $user_name = Auth::guard('cashier')->user()->username;
             } else {
-                $user_name    = Auth::guard('admin')->user()->username;
+                $user_name = Auth::guard('admin')->user()->username;
             }
             return $user_name;
         }

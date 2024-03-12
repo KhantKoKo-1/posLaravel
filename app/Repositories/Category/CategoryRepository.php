@@ -35,7 +35,6 @@ class CategoryRepository implements CategoryRepositoryInterface
             ->whereNull('category.deleted_at')
             ->orderByDesc('category.id')
             ->paginate(5);
-
         return $categories;
     }
 
@@ -91,5 +90,4 @@ class CategoryRepository implements CategoryRepositoryInterface
         }
         return $response;
     }
-
 }

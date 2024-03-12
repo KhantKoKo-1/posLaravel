@@ -36,14 +36,13 @@ class DiscountController extends Controller
             Utility::saveErrorLog($screen, $e->getMessage());
             abort(500);
         }
-
     }
+
     public function getList()
     {
         $screen = "Show Discount Promotion List !!";
         try {
             $discountData = $this->discountRepository->selectAllDiscountPromotion();
-            // dd($discountData);
             $queryLog = DB::getQueryLog();
             Utility::saveDebugLog($screen, $queryLog);
             return view('backend.discount.list', compact('discountData'));
@@ -51,7 +50,6 @@ class DiscountController extends Controller
             Utility::saveErrorLog($screen, $e->getMessage());
             abort(500);
         }
-
     }
 
     public function store(DiscountStoreRequest $request)
@@ -69,7 +67,6 @@ class DiscountController extends Controller
             abort(500);
             return redirect('sg-backend/discount/list')->with(['errorMessage' => ' Create Promotion Item Fail'])->withInput();
         }
-
     }
 
     public function getEdit($id)
@@ -120,6 +117,4 @@ class DiscountController extends Controller
             return redirect('sg-backend/discount/list')->with(['errorMessage' => 'Delete Promotion Item Fail'])->withInput();
         }
     }
-
-
 }

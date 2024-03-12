@@ -8,7 +8,6 @@ return new class extends Migration
 {
     /**
      * Run the migrations.
-     *
      * @return void
      */
     public function up()
@@ -21,8 +20,6 @@ return new class extends Migration
             $table->unsignedInteger('sub_total')->default(0);
             $table->unsignedInteger('order_id');
             $table->unsignedInteger('item_id');
-            // $table->foreign('order_id')->references('id')->on('order');
-            // $table->foreign('item_id')->references('id')->on('item');
             $table->tinyInteger('status')->default(0)->comment('0 (unpaid) 1 (paid) 2 (cancel)');
             $table->unsignedInteger('created_by');
             $table->unsignedInteger('updated_by');
@@ -34,7 +31,6 @@ return new class extends Migration
 
     /**
      * Reverse the migrations.
-     *
      * @return void
      */
     public function down()

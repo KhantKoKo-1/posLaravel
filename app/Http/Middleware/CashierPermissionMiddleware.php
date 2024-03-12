@@ -33,7 +33,6 @@ class CashierPermissionMiddleware
                         session(['shift_id' => $shiftId->id]);
                         return $next($request);
                     }
-
                 } else {
                     return redirect('/unauthorize');
                 }

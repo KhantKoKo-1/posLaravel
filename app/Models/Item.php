@@ -41,5 +41,4 @@ class Item extends Model
     {
         return $this->belongsTo(OrderDetail::class,'item_id','id');
     }
-
 }

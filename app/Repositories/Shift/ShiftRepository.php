@@ -60,28 +60,28 @@ class ShiftRepository implements ShiftRepositoryInterface
     public function selectOrdersByShiftId(int $shift_id, bool $download)
     {
         $orders = Order::selectRaw('CONCAT("' . $shift_id . '", "-", id, "-", DATE_FORMAT(created_at, "%Y%m%d")) as order_no')
-            ->addSelect(
-                DB::raw("TIME(created_at) AS order_time"),
-                DB::raw("CASE 
-                        WHEN payment = 0 THEN 'unpaid'
-                        ELSE payment
-                    END AS payment"),
-                DB::raw("CASE 
-                        WHEN payment = 0 AND refund = 0 THEN 'unpaid'
-                        WHEN refund = 0 THEN '0'
-                        ELSE refund
-                    END AS refund"),
-                DB::raw("CASE 
-                        WHEN status = 0 THEN 'unpaid' 
-                        WHEN status = 1 THEN 'paid' 
-                        WHEN status = 2 THEN 'cancelled' 
-                        ELSE 'unknown' 
-                    END AS status"),
-                'total_amount'
-            )
-            ->where('shift_id', $shift_id)
-            ->whereNull('deleted_at')
-            ->orderBy('id', 'DESC');
+                ->addSelect(
+                    DB::raw("TIME(created_at) AS order_time"),
+                    DB::raw("CASE 
+                            WHEN payment = 0 THEN 'unpaid'
+                            ELSE payment
+                        END AS payment"),
+                    DB::raw("CASE 
+                            WHEN payment = 0 AND refund = 0 THEN 'unpaid'
+                            WHEN refund = 0 THEN '0'
+                            ELSE refund
+                        END AS refund"),
+                    DB::raw("CASE 
+                            WHEN status = 0 THEN 'unpaid' 
+                            WHEN status = 1 THEN 'paid' 
+                            WHEN status = 2 THEN 'cancelled' 
+                            ELSE 'unknown' 
+                        END AS status"),
+                    'total_amount'
+                )
+                ->where('shift_id', $shift_id)
+                ->whereNull('deleted_at')
+                ->orderBy('id', 'DESC');
 
         if ($download) {
             $orders = $orders->get();
@@ -90,5 +90,4 @@ class ShiftRepository implements ShiftRepositoryInterface
         }
         return $orders;
     }
-
 }

@@ -19,6 +19,7 @@ use App\Http\Resources\Order\OrderResource;
 use App\Repositories\Category\CategoryRepositoryInterface;
 use App\Repositories\Item\ItemRepositoryInterface;
 use App\Repositories\Order\OrderRepositoryInterface;
+use App\Repositories\Setting\SettingRepositoryInterface;
 use App\Utility;
 use Illuminate\Support\Facades\DB;
 
@@ -27,13 +28,15 @@ class OrderFrontendController extends Controller
     private $categoryRepository;
     private $itemRepository;
     private $orderRepository;
+    private $settingRepository;
 
-    public function __construct(CategoryRepositoryInterface $categoryRepository, ItemRepositoryInterface $itemRepository, OrderRepositoryInterface $orderRepository)
+    public function __construct(CategoryRepositoryInterface $categoryRepository, ItemRepositoryInterface $itemRepository, OrderRepositoryInterface $orderRepository,SettingRepositoryInterface $settingRepository)
     {
         DB::connection()->enableQueryLog();
         $this->categoryRepository = $categoryRepository;
-        $this->itemRepository = $itemRepository;
-        $this->orderRepository = $orderRepository;
+        $this->itemRepository     = $itemRepository;
+        $this->orderRepository    = $orderRepository;
+        $this->settingRepository  = $settingRepository;
     }
 
     public function getOrder()
@@ -56,6 +59,7 @@ class OrderFrontendController extends Controller
         Utility::saveInfoLog($screen);
         return view('frontend.order.form', compact('id'));
     }
+
     public function getOrderDetail($id)
     {
         $screen = "Show Get Order Detail From OrderFrontendController";
@@ -90,6 +94,7 @@ class OrderFrontendController extends Controller
             abort(500);
         }
     }
+
     public function getAllItems()
     {
         $screen = "Show Get All Items Method From OrderFrontendController";
@@ -117,6 +122,7 @@ class OrderFrontendController extends Controller
             abort(500);
         }
     }
+
     public function makeOrder(StoreOrderRequest $request)
     {
         $screen = "Show makeOrder Method From OrderFrontendController";
@@ -134,6 +140,7 @@ class OrderFrontendController extends Controller
             abort(500);
         }
     }
+
     public function getOrders(GetOrdersRequest $request)
     {
         $screen = "Show getOrders Method From OrderFrontendController";
@@ -147,10 +154,12 @@ class OrderFrontendController extends Controller
             abort(500);
         }
     }
+
     public function changeStatus(ChangeStatusRequest $request)
     {
         $screen = "Show Change Status Method From OrderFrontendController";
         try {
+            $response = $this->orderRepository->changeOrderStatus((int) $request->order_id, (int) $request->status);
             $response = $this->orderRepository->changeOrderStatus((int) $request->order_id, (int) $request->status);
             if ($response == '200') {
                 $queryLog = DB::getQueryLog();
@@ -177,6 +186,7 @@ class OrderFrontendController extends Controller
             abort(500);
         }
     }
+
     public function editOrder(UpdateOrderRequest $request)
     {
         $screen = "Show Edit Order Method From OrderFrontendController";
@@ -197,14 +207,18 @@ class OrderFrontendController extends Controller
     {
         $screen = "Show Fetch Order Detail From OrderFrontendController";
         try {
-            $order = $this->orderRepository->selectOrdersByOrderId((int) $request->order_id, (int) $request->shift_id);
+            $order   = $this->orderRepository->selectOrdersByOrderId((int) $request->order_id, (int) $request->shift_id);
+            $setting = $this->settingRepository->selectAllSettings();
+            $order_detail = [
+                'order'   => $order,
+                'setting' => $setting
+            ];
             $queryLog = DB::getQueryLog();
             Utility::saveDebugLog($screen, $queryLog);
-            return new OrderListResource($order);
+            return new OrderListResource($order_detail);
         } catch (\Exception $e) {
             Utility::saveErrorLog($screen, $e->getMessage());
             abort(500);
         }
     }
-
 }

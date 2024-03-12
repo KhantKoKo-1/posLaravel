@@ -25,17 +25,17 @@ class SettingStoreRequest extends FormRequest
     public function rules()
     {
         return [
-            'company_name' => [
-                'required',
-                Rule::unique('setting', 'company_name')
-                    ->where(function ($query) {
-                        $query->whereNull('deleted_at');
-                    }),
-            ],
-            'company_phone' => 'required',
-            'company_email' => 'required|email',
+            'company_name'    => [
+                                    'required',
+                                    Rule::unique('setting', 'company_name')
+                                        ->where(function ($query) {
+                                            $query->whereNull('deleted_at');
+                                        }),
+                                ],
+            'company_phone'   => 'required',
+            'company_email'   => 'required|email',
             'company_address' => 'required',
-            'upload_photo' => ['required', 'image', 'mimes:jpeg,png,jpg,gif'],
+            'upload_photo'    => ['required', 'image', 'mimes:jpeg,png,jpg,gif'],
         ];
     }
 

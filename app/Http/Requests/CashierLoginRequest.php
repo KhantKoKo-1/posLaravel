@@ -8,7 +8,6 @@ class CashierLoginRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
-     *
      * @return bool
      */
     public function authorize()
@@ -18,7 +17,6 @@ class CashierLoginRequest extends FormRequest
 
     /**
      * Get the validation rules that apply to the request.
-     *
      * @return array<string, mixed>
      */
     public function rules()
@@ -37,7 +35,6 @@ class CashierLoginRequest extends FormRequest
             'password.required' => 'Please fill password .',
             'password.min'      => 'The password must be at least 6 digits.',
             'password.numeric'  => 'Password must be numeric .',
-
         ];
     }
 }

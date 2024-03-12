@@ -29,5 +29,4 @@ class Category extends Model
     {
         return $this->hasMany(Item::class, 'category_id', 'id');
     }
-
 }

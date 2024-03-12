@@ -101,7 +101,6 @@ class UserController extends Controller
             Utility::saveErrorLog($screen, $e -> getMessage());
             return redirect('sg-backend/account/list/'.$request->account_type)->with(['errorMessage' => 'Update Account Fail'])->withInput();
         }
-
     }
 
     public function accountDelete(AccountDelRequest $request)
@@ -118,6 +117,5 @@ class UserController extends Controller
             Utility::saveErrorLog($screen, $e -> getMessage());
             return redirect('sg-backend/account/list/cashier')->with(['errorMessage' => 'Delete Account Fail'])->withInput();
         }
-
     }
 }

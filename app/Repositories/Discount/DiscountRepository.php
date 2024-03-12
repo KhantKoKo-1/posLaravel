@@ -10,13 +10,10 @@ use App\ReturnMessage;
 use App\Utility;
 use Illuminate\Support\Facades\DB;
 
-// use Illuminate\Support\Facades\DB;
-
 class DiscountRepository implements DiscountRepositoryInterface
 {
     public function createDiscountItems(array $data)
     {
-
         if ($data['discount_type'] == 'percentage') {
             $data["percentage"] = $data["amount"];
             unset($data["amount"]);
@@ -61,7 +58,6 @@ class DiscountRepository implements DiscountRepositoryInterface
                             ->whereNull('deleted_at')
                             ->orderByDesc('id')
                             ->paginate(5);
-
         return $discountPromotions;
     }
 
@@ -149,5 +145,4 @@ class DiscountRepository implements DiscountRepositoryInterface
         }
         return $response;
     }
-
 }

@@ -10,7 +10,6 @@ class CategoryUpdRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
-     *
      * @return bool
      */
     public function authorize()
@@ -20,24 +19,21 @@ class CategoryUpdRequest extends FormRequest
 
     /**
      * Get the validation rules that apply to the request.
-     *
      * @return array<string, mixed>
      */
     public function rules()
     {
         return [
-            'id'        => ['required','numeric'],
-            'name'      => ['required',
+            'id'   => ['required','numeric'],
+            'name' => ['required',
                         Rule::unique('category', 'name')
                         ->where(function ($query) {
                             $query->whereNull('deleted_at');
                         })->ignore(request('id')),
                       ],
-            // 'parent_id'    => ['required'],
             'upload_photo' => [ 'required_if:has_image,1','image', 'mimes:jpeg,png,jpg,gif'],
         ];
     }
-
 
     public function messages()
     {
@@ -46,7 +42,6 @@ class CategoryUpdRequest extends FormRequest
             'id.numeric'               => 'Category id must be numeric',
             'name.required'            => 'Please fill category name .',
             'name.unique'              => 'Category name is already exists .',
-            // 'parent_id.required'       => 'Please select Parent-Category .',
             'upload_photo.required_if' => 'Please upload photo.',
             'upload_photo.mimes'       => 'Please fill valid photo type.',
         ];

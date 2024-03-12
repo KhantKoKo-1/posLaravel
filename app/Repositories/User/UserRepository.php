@@ -90,5 +90,4 @@ class UserRepository implements UserRepositoryInterface
         }
         return $response;
     }
-
 }

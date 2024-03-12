@@ -56,7 +56,6 @@ class ReportRepository implements ReportRepositoryInterface
                     $total_amount
                 ];
             }
-
         }
         $data['months'] = $month;
         $data['amounts'] = $amount;
@@ -176,7 +175,6 @@ class ReportRepository implements ReportRepositoryInterface
                 ];
             }
         }
-
         return $data;
     }
 }

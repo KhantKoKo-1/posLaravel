@@ -32,9 +32,9 @@ class OrderDetail extends Model
     {
         return $this->hasMany(Item::class, 'id', 'item_id');
     }
+    
     public function getOrder(): BelongsTo
     {
         return $this->belongsTo(Item::class, 'order_id', 'id');
     }
-
 }

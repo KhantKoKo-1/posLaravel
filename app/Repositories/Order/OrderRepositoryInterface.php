@@ -11,5 +11,4 @@ interface OrderRepositoryInterface
     public function changeOrderStatus(int $order_id,int $status);
     public function fetchOrderItemByOrderId(int $order_id);
     public function updateOrder(array $data);
-
 }

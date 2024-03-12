@@ -1,34 +1,34 @@
-var app = angular.module('myApp', []);
-app.controller('myCtrl', function($scope,$http) {
-    $scope.UserInputType = '';
-    $scope.username = '';
-    $scope.password = '';
-    $scope.Login = function(){
-        $('#submit').submit();
-    }
+var app = angular.module("myApp", []);
+app.controller("myCtrl", function ($scope, $http) {
+    $scope.UserInputType = "";
+    $scope.username = "";
+    $scope.password = "";
+    $scope.Login = function () {
+        $("#submit").submit();
+    };
 
-    $scope.usernameFocus = function(){
-       $scope.UserInputType = 'username'
-    }
-    
-    $scope.passwordFocus = function(){
-        $scope.UserInputType = 'password'
-     }
+    $scope.usernameFocus = function () {
+        $scope.UserInputType = "username";
+    };
 
-    $scope.numberClick = function(number){
+    $scope.passwordFocus = function () {
+        $scope.UserInputType = "password";
+    };
+
+    $scope.numberClick = function (number) {
         var input_num = parseInt(number);
-        if($scope.UserInputType == '' || $scope.UserInputType == 'username'){
+        if ($scope.UserInputType == "" || $scope.UserInputType == "username") {
             $scope.username = $scope.username + input_num;
-        }else{
+        } else {
             $scope.password = $scope.password + input_num;
         }
-    }
+    };
 
-    $scope.delete = function(){
-        if($scope.UserInputType == 'username'){
+    $scope.delete = function () {
+        if ($scope.UserInputType == "username") {
             $scope.username = $scope.username.slice(0, -1);
-        }else{
+        } else {
             $scope.password = $scope.password.slice(0, -1);
         }
-     }
+    };
 });

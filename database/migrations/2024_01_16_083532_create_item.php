@@ -8,7 +8,6 @@ return new class extends Migration
 {
     /**
      * Run the migrations.
-     *
      * @return void
      */
     public function up()
@@ -17,7 +16,6 @@ return new class extends Migration
             $table->id();
             $table->string('name',50);
             $table->unsignedInteger('category_id');
-            // $table->foreign('category_id')->references('id')->on('category');
             $table->unsignedInteger('price');
             $table->unsignedInteger('quantity')->nullable();
             $table->string('code_no',20)->nullable();
@@ -33,7 +31,6 @@ return new class extends Migration
 
     /**
      * Reverse the migrations.
-     *
      * @return void
      */
     public function down()

@@ -10,5 +10,4 @@ interface DiscountRepositoryInterface
     public function getItemIds(int $id);
     public function updateDiscountPromotion(array $data);
     public function delete(int $id);
-
 }

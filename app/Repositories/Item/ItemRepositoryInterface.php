@@ -9,5 +9,4 @@ interface ItemRepositoryInterface
     public function selectItem(bool $order_item,int $id);
     public function updateItem(array $data);
     public function deleteItem(int $id);
-
 }

@@ -24,8 +24,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-//git add
-
 Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 Route::get('/backendLogout', [LoginController::class, 'backendLogout']);
 Route::get('/unauthorize', [LoginController::class, 'unauthorizePage']);
@@ -65,9 +63,6 @@ Route::group(['prefix' => '/','middleware' => 'cashier' ], function () {
     Route::get('/order_edit/{id}', [OrderFrontendController::class, 'getEditOrder']);
     Route::get('/order-detail/{id}', [OrderFrontendController::class, 'getOrderDetail']);
 });
-
-
-
 
 Route::group(['prefix' => 'sg-backend','middleware' => 'admin' ], function () {
     Route::get('/index', [AdminDashboardController::class, 'home'])->name('backendDashbaord');
@@ -118,6 +113,7 @@ Route::group(['prefix' => 'sg-backend','middleware' => 'admin' ], function () {
         Route::post('/updateForm', [ItemController::class, 'updateForm'])->name('updateItemForm');
         Route::post('/delete', [ItemController::class, 'itemDelete']);
     });
+
     Route::group(['prefix' => 'discount'], function () {
         Route::get('/', [DiscountController::class, 'getForm']);
         Route::post('/create', [DiscountController::class, 'store'])->name('storeDiscountForm');
@@ -126,6 +122,7 @@ Route::group(['prefix' => 'sg-backend','middleware' => 'admin' ], function () {
         Route::post('/updateForm', [DiscountController::class, 'updateForm'])->name('updateDiscountForm');
         Route::post('/delete', [DiscountController::class, 'discountDelete']);
     });
+
     Route::group(['prefix' => 'account'], function () {
         Route::get('/store/{type}', [UserController::class, 'getForm']);
         Route::post('/create', [UserController::class, 'store'])->name('storeAccountForm');
@@ -134,6 +131,7 @@ Route::group(['prefix' => 'sg-backend','middleware' => 'admin' ], function () {
         Route::post('/updateForm', [UserController::class, 'updateForm'])->name('updateAccountForm');
         Route::post('/delete', [UserController::class, 'accountDelete']);
     });
+
     Route::group(['prefix' => 'setting'], function () {
         Route::get('/', [SettingController::class, 'getForm']);
         Route::post('/create', [SettingController::class, 'store'])->name('storeSettingForm');
@@ -142,5 +140,4 @@ Route::group(['prefix' => 'sg-backend','middleware' => 'admin' ], function () {
         Route::post('/updateForm', [SettingController::class, 'updateForm'])->name('updateSettingForm');
         Route::post('/delete', [SettingController::class, 'settingDelete']);
     });
-
 });

@@ -9,7 +9,6 @@ class OrderResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
-     *
      * @param  \Illuminate\Http\Request  $request
      * @return array|\Illuminate\Contracts\Support\Arrayable|\JsonSerializable
      */
@@ -25,7 +24,6 @@ class OrderResource extends JsonResource
             'original_amount' => $this->price - $this->discount_amount,
             'total_amount'    => $this->price - $this->discount_amount,
             'quantity'        => $this->quantity ?? 1,
-            // 'items'           => ItemResource::collection($this->getItems()->get())
         ];
     }
 }

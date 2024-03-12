@@ -68,7 +68,6 @@ class SettingController extends Controller
         }
     }
 
-
     public function getEdit($id)
     {
         $screen = "Setting Edit Screen !!";

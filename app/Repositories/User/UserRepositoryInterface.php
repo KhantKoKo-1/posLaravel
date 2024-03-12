@@ -10,5 +10,4 @@ interface UserRepositoryInterface
     public function updateAccountInfo(array $data);
     public function updateAccountPassword(array $data);
     public function deleteAccount(int $id);
-
 }

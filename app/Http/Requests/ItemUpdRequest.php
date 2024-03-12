@@ -10,7 +10,6 @@ class ItemUpdRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
-     *
      * @return bool
      */
     public function authorize()
@@ -20,25 +19,22 @@ class ItemUpdRequest extends FormRequest
 
     /**
      * Get the validation rules that apply to the request.
-     *
      * @return array<string, mixed>
      */
     public function rules()
     {
         return [
-            'id'        => ['required','numeric'],
-            'name'      => ['required',
-                        Rule::unique('item', 'name')
-                        ->where(function ($query) {
-                            $query->whereNull('deleted_at');
-                        })->ignore(request('id')),
-                      ],
-            // 'parent_id'    => ['required'],
+            'id'            => ['required','numeric'],
+            'name'          => ['required',
+                                Rule::unique('item', 'name')
+                                ->where(function ($query) {
+                                    $query->whereNull('deleted_at');
+                                })->ignore(request('id')),
+                            ],
             'upload_photo' => [ 'required_if:has_image,1','image', 'mimes:jpeg,png,jpg,gif'],
             'shift'        => [new ShiftValidationRule()],
         ];
     }
-
 
     public function messages()
     {
@@ -47,7 +43,6 @@ class ItemUpdRequest extends FormRequest
             'id.numeric'               => 'Item id must be numeric',
             'name.required'            => 'Please fill Item name .',
             'name.unique'              => 'Item name is already exists .',
-            // 'parent_id.required'       => 'Please select Parent-Item .',
             'upload_photo.required_if' => 'Please upload photo.',
             'upload_photo.mimes'       => 'Please fill valid photo type.',
         ];

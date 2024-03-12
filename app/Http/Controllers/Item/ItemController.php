@@ -30,7 +30,6 @@ class ItemController extends Controller
             Utility::saveErrorLog($screen, $e->getMessage());
             abort(500);
         }
-
     }
 
     public function store(ItemStoreRequest $request)
@@ -48,7 +47,6 @@ class ItemController extends Controller
             abort(500);
             return redirect('sg-backend/item/list')->with(['errorMessage' => ' Create Item Fail'])->withInput();
         }
-
     }
 
     public function getList()
@@ -63,7 +61,6 @@ class ItemController extends Controller
             Utility::saveErrorLog($screen, $e->getMessage());
             abort(500);
         }
-
     }
 
     public function getEdit($id)
@@ -111,6 +108,5 @@ class ItemController extends Controller
             Utility::saveErrorLog($screen, $e->getMessage());
             return redirect('sg-backend/item/list')->with(['errorMessage' => 'Delete Item Fail'])->withInput();
         }
-
     }
 }

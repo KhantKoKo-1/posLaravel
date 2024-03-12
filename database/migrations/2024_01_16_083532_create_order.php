@@ -8,7 +8,6 @@ return new class extends Migration
 {
     /**
      * Run the migrations.
-     *
      * @return void
      */
     public function up()
@@ -16,7 +15,6 @@ return new class extends Migration
         Schema::create('order', function (Blueprint $table) {
             $table->id();
             $table->unsignedInteger('shift_id');
-            // $table->foreign('shift_id')->references('id')->on('shift');
             $table->unsignedInteger('payment')->default(0);
             $table->unsignedInteger('refund')->default(0);
             $table->unsignedInteger('total_amount')->default(0);
@@ -31,7 +29,6 @@ return new class extends Migration
 
     /**
      * Reverse the migrations.
-     *
      * @return void
      */
     public function down()

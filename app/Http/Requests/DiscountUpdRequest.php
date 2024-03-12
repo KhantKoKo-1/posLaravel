@@ -10,7 +10,6 @@ class DiscountUpdRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
-     *
      * @return bool
      */
     public function authorize()
@@ -20,7 +19,6 @@ class DiscountUpdRequest extends FormRequest
 
     /**
      * Get the validation rules that apply to the request.
-     *
      * @return array<string, mixed>
      */
     public function rules()
@@ -31,7 +29,6 @@ class DiscountUpdRequest extends FormRequest
             'start_date'    => ['required', 'date'],
             'end_date'      => ['required', 'date', 'after:start_date'],
             'item'          => ['required','array',new PromotionDateRule($this->start_date, $this->end_date, $this->id)],
-            // 'description'   => ['required'],
         ];
 
         // If discount_type is 'percentage', validate that 'amount' is not greater than 100%
@@ -58,8 +55,6 @@ class DiscountUpdRequest extends FormRequest
             'end_date.date'           => 'Please fill valid date format .',
             'end_date.after'          => 'End date is greater than start date .',
             'item.required'           => 'Please choose discount item .',
-            // 'item.array'              => 'Discount item must be array.',
-            // 'description.required'    => 'Please choose discount item .',
         ];
     }
 }

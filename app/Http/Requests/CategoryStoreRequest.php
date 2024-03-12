@@ -9,7 +9,6 @@ class CategoryStoreRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
-     *
      * @return bool
      */
     public function authorize()
@@ -19,7 +18,6 @@ class CategoryStoreRequest extends FormRequest
 
     /**
      * Get the validation rules that apply to the request.
-     *
      * @return array<string, mixed>
      */
     public function rules()
@@ -35,7 +33,6 @@ class CategoryStoreRequest extends FormRequest
             'upload_photo' => ['required', 'image', 'mimes:jpeg,png,jpg,gif'],
         ];
     }
-
 
     public function messages()
     {

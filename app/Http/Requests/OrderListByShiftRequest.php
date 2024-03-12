@@ -10,7 +10,6 @@ class OrderListByShiftRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
-     *
      * @return bool
      */
     public function authorize()
@@ -20,22 +19,20 @@ class OrderListByShiftRequest extends FormRequest
 
     /**
      * Get the validation rules that apply to the request.
-     *
      * @return array<string, mixed>
      */
     public function rules()
     {
         return [
-            'shift_id'   => ['required'],
+            'shift_id' => ['required'],
         ];
     }
-
 
     public function messages()
     {
         return [
-            'shift_id.required'              => 'Shift id is required',
-            'shift_id.numeric'               => 'Shift id must be numeric',
+            'shift_id.required' => 'Shift id is required',
+            'shift_id.numeric'  => 'Shift id must be numeric',
         ];
     }
 }

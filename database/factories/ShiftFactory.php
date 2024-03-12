@@ -54,7 +54,6 @@ class ShiftFactory extends Factory
                     'created_at'      => $shift->created_at,
                     'updated_at'      => $shift->updated_at,
                 ]);
-
                 $items     = Item::whereNull('deleted_at')->get()->shuffle()->take(5);
                 $subTotal  = 0;
                 foreach ($items as $item) {

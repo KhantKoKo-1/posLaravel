@@ -3,12 +3,12 @@
 namespace App\Repositories\Setting;
 
 use App\Models\Setting;
-use App\Repositories\Setting\settingRepositoryInterface;
+use App\Repositories\Setting\SettingRepositoryInterface;
 use App\ReturnMessage;
 use App\Utility;
 use Illuminate\Support\Facades\DB;
 
-class settingRepository implements settingRepositoryInterface
+class SettingRepository implements SettingRepositoryInterface
 {
     public function createSetting(array $data)
     {
@@ -78,5 +78,4 @@ class settingRepository implements settingRepositoryInterface
         }
         return $response;
     }
-
 }

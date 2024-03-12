@@ -47,7 +47,6 @@ class CategoryController extends Controller
             Utility::saveErrorLog($screen, $e->getMessage());
             return redirect('sg-backend/category/list')->with(['errorMessage' => ' Create Category Fail'])->withInput();
         }
-
     }
 
     public function getList()

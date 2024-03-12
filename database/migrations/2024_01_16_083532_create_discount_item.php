@@ -8,7 +8,6 @@ return new class extends Migration
 {
     /**
      * Run the migrations.
-     *
      * @return void
      */
     public function up()
@@ -16,9 +15,7 @@ return new class extends Migration
         Schema::create('discount_item', function (Blueprint $table) {
             $table->id();
             $table->unsignedInteger('discount_id');
-            $table->unsignedInteger('item_id');
-            // $table->foreign('discount_id')->references('id')->on('discount_promotion')->onDelete('cascade');
-            // $table->foreign('item_id')->references('id')->on('item')->onDelete('cascade');            
+            $table->unsignedInteger('item_id');       
             $table->tinyInteger('status')->default(0);
             $table->unsignedInteger('created_by');
             $table->unsignedInteger('updated_by');
@@ -30,7 +27,6 @@ return new class extends Migration
 
     /**
      * Reverse the migrations.
-     *
      * @return void
      */
     public function down()

@@ -8,5 +8,4 @@ interface ShiftRepositoryInterface
     public function startShift();
     public function endShift();
     public function selectOrdersByShiftId(int $shift_id,bool $download);
-
 }

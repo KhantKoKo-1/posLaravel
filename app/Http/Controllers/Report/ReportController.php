@@ -182,7 +182,6 @@ class ReportController extends Controller
         } catch (Exception $e) {
             $screen = 'Daily Item Report Download:: ';
             $queryLog = DB::getQueryLog();
-
             Utility::saveErrorLog($screen, $e->getMessage());
             return back()->with('error', 'An error occurred: ' . $e->getMessage());
         }

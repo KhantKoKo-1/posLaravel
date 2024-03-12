@@ -9,7 +9,6 @@ class OrderDetailResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
-     *
      * @param  \Illuminate\Http\Request  $request
      * @return array|\Illuminate\Contracts\Support\Arrayable|\JsonSerializable
      */
@@ -24,7 +23,7 @@ class OrderDetailResource extends JsonResource
             'sub_total'       => $this->sub_total,
             'order_id'        => $this->order_id,
             'item_id'         => $this->item_id,
-            'items'       => ItemResource::collection($this->getItems()->get())
+            'items'           => ItemResource::collection($this->getItems()->get())
         ];
     }
 }

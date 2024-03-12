@@ -10,7 +10,6 @@ class DiscountStoreRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
-     *
      * @return bool
      */
     public function authorize()
@@ -20,7 +19,6 @@ class DiscountStoreRequest extends FormRequest
 
     /**
      * Get the validation rules that apply to the request.
-     *
      * @return array<string, mixed>
      */
     public function rules()
@@ -57,7 +55,6 @@ class DiscountStoreRequest extends FormRequest
             'end_date.date'           => 'Please fill valid date format .',
             'end_date.after'          => 'End date is greater than start date .',
             'item.required'           => 'Please choose discount item .',
-            // 'item.array'              => 'Discount item must be array.',
         ];
     }
 }

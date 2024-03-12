@@ -33,5 +33,4 @@ class DiscountPromotion extends Model
     {
         return $this->hasMany(DiscountItem::class, 'discount_id', 'id');
     }
-
 }

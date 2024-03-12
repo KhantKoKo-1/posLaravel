@@ -29,6 +29,7 @@ class PaymentFrontendController extends Controller
         Utility::saveInfoLog($screen);
         return view('frontend.payment.form', compact('id'));
     }
+
     public function getOrderDetailFromPayment(GetPaymentRequest $request)
     {
         $screen = "Show Get Order Detail From PaymentFrontendController";
@@ -42,6 +43,7 @@ class PaymentFrontendController extends Controller
             abort(500);
         }
     }
+    
     public function storePayment(StorePaymentRequest $request)
     {
         $screen = "Show Store Payment From PaymentFrontendController";
@@ -57,5 +59,4 @@ class PaymentFrontendController extends Controller
             abort(500);
         }
     }
-
 }
