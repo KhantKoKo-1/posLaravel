@@ -12,11 +12,9 @@
                               <div class="clearfix"></div>
                           </div>
                           <div class="x_content">
+                            <div class="row">
                               <form action="" id="searchForm" method="get">
-                                  <div class="row">
-                                      <label for="start_date_picker" class="col-form-label label-align">Start Date<span
-                                              class="required">*</span></label>
-                                      <div class="col-2">
+                                      <div class="col-3 col-md-3">
                                           <input type="text" placeholder="Start Date"
                                               class="form-control has-feedback-left" name="start_date"
                                               id="start_date_picker" value="{{ $start }}"
@@ -25,9 +23,7 @@
                                               aria-hidden="true"></span>
                                           <span id="inputSuccess2Status" class="sr-only">(success)</span>
                                       </div>
-                                      <label for="end_date_picker" class="col-form-label label-align">End Date<span
-                                              class="required">*</span></label>
-                                      <div class="col-2">
+                                      <div class="col-3 col-md-3">
                                           <input type="text" placeholder="End Date"
                                               class="form-control has-feedback-left" name="end_date" id="end_date_picker"
                                               value="{{ $end }}" aria-describedby="inputSuccess2Status" readonly>
@@ -35,12 +31,12 @@
                                               aria-hidden="true"></span>
                                           <span id="inputSuccess2Status" class="sr-only">(success)</span>
                                       </div>
-                                      <div class="col-4 ml-10">
+                                      <div class="col-4 col-md-4 ml-10">
                                           <button id="search" type="button" class="btn btn-primary"><i
                                                   class="glyphicon glyphicon-search"></i> Search</button>
                                       </div>
                               </form>
-                              <div class="col-3">
+                              <div class="col-3 col-md-3">
                                   <form action="{{ route('dailyReportDownload') }}" id="downloadForm" method="post">
                                       @csrf
                                       <input type="hidden" id="start_date" name="start_date" />
@@ -49,6 +45,7 @@
                                               class="fa fa-solid fa-download"></i> Download</button>
                                   </form>
                               </div>
+                            </div>
                           </div>
                           </br>
                           <div class="table-responsive">
@@ -78,11 +75,11 @@
                                                   <th>Total</th>
                                                   <th>{{ $sale_report->total }}</th>
                                               @endif
+                                          </tr>
+                                      @endforeach
+                                  </tbody>
+                              </table>
                           </div>
-                          </tr>
-                          @endforeach
-                          </tbody>
-                          </table>
                       </div>
                   </div>
               </div>

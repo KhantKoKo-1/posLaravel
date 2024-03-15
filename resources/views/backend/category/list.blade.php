@@ -57,7 +57,7 @@
                                                                 class="btn btn-info btn-xs"><i class="fa fa-pencil"></i>
                                                                 Edit</a>
                                                         </div>
-                                                        @if (check_items_for_category($category->id) == 0)
+                                                        @if (check_child_category($category->id) == 0 && check_items_for_category($category->id) == 0)
                                                             <div class='col-6 col-md-9 mr-10'>
                                                                 <form id="categoryDelete"
                                                                     action="{{ url('sg-backend/category/delete') }}"

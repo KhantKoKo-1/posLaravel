@@ -1766,21 +1766,38 @@ function init_daterangepicker_single_call() {
         $('#end_date_picker').val(start.format('MM/DD/YYYY'));
     });
 
-    $('#start_date_picker').on('apply.daterangepicker', function(ev, picker) {
-        var endDate = $('#end_date_picker').val();
-        if (endDate) {
-            end_date_picker.data('daterangepicker').minDate = moment(picker.startDate, 'MM/DD/YYYY').add(1, 'days');
+
+    $('#start_date_picker').click(function() {
+        let start = $('#end_date_picker').val()
+        start_date_picker.data('daterangepicker').maxDate = moment(start, 'MM/DD/YYYY').subtract(1, 'days');
+        if (start_date_picker.data('daterangepicker').isShowing) {
+            start_date_picker.data('daterangepicker').updateView();
+        }
+    });
+
+    // $('#start_date_picker').on('apply.daterangepicker', function(ev, picker) {
+    //     var endDate = $('#end_date_picker').val();
+    //     if (endDate) {
+    //         end_date_picker.data('daterangepicker').minDate = moment(picker.startDate, 'MM/DD/YYYY').add(1, 'days');
+    //         end_date_picker.data('daterangepicker').updateView();
+    //     }
+    // });
+
+    $('#end_date_picker').click(function() {
+        let start = $('#start_date_picker').val();
+        end_date_picker.data('daterangepicker').minDate = moment(start, 'MM/DD/YYYY').add(1, 'days');
+        if (end_date_picker.data('daterangepicker').isShowing) {
             end_date_picker.data('daterangepicker').updateView();
         }
     });
 
-    $('#end_date_picker').on('apply.daterangepicker', function(ev, picker) {
-        var startDate = $('#start_date_picker').val();
-        if (startDate) {
-            start_date_picker.data('daterangepicker').maxDate = moment(picker.startDate, 'MM/DD/YYYY').subtract(1, 'days');
-            start_date_picker.data('daterangepicker').updateView();
-        }
-    });
+    // $('#end_date_picker').on('apply.daterangepicker', function(ev, picker) {
+    //     var startDate = $('#start_date_picker').val();
+    //     if (startDate) {
+    //         start_date_picker.data('daterangepicker').maxDate = moment(picker.startDate, 'MM/DD/YYYY').subtract(1, 'days');
+    //         start_date_picker.data('daterangepicker').updateView();
+    //     }
+    // });
 }
 
 

@@ -95,8 +95,7 @@
                                         <span class="errorMessage">{{ $errors->first('upload_photo') }}</span>
                                     @endif
                                 </div>
-                            </div>>
-                            </form>
+                            </div>
                         </div>
                     </div>
                     <input class="hide" type="file" id="fileInput" name="upload_photo" onchange='previewImage(this)'>

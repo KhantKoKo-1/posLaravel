@@ -14,17 +14,17 @@
 
                         <div class="x_content">
                             @if (isset($setting))
-                                <form action="{{ route('updateSettingForm') }}" method="POST" enctype="multipart/form-data"
-                                    novalidate>
-                                    <div>
-                                        <button class="btn btn-sm btn-secondary">
-                                            <a href="/sg-backend/item/list" style="color: white;">Back</a>
-                                        </button>
-                                    </div>
-                                    <input name="id" type="hidden" value="{{ $setting->id }}" />
-                                @else
-                                    <form action="{{ route('storeSettingForm') }}" method="POST"
-                                        enctype="multipart/form-data" novalidate>
+                            <form action="{{ route('updateSettingForm') }}" method="POST" enctype="multipart/form-data"
+                                novalidate>
+                                <div>
+                                    <button class="btn btn-sm btn-secondary">
+                                        <a href="/sg-backend/item/list" style="color: white;">Back</a>
+                                    </button>
+                                </div>
+                                <input name="id" type="hidden" value="{{ $setting->id }}" />
+                            @else
+                                <form action="{{ route('storeSettingForm') }}" method="POST"
+                                    enctype="multipart/form-data" novalidate>
                             @endif
                             @csrf
                             <span class="section"> Setting Info</span>
@@ -94,7 +94,6 @@
                                     @endif
                                 </div>
                             </div>
-                            </form>
                         </div>
                     </div>
                     <input class="hide" type="file" id="fileInput" name="upload_photo" onchange='previewImage(this)'>
@@ -105,7 +104,6 @@
                                 <button type='reset' class="btn btn-success">Reset</button>
                             </div>
                         </div>
-                    </div>
                     </form>
                 </div>
             </div>
