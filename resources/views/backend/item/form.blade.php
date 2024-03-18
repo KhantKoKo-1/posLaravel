@@ -13,13 +13,14 @@
                         </div>
                         <div class="">
                             @if (isset($item))
+                            <div>
+                                <button class="btn btn-sm btn-secondary">
+                                    <a href="/sg-backend/item/list" style="color: white;">Back</a>
+                                </button>
+                            </div>
                                 <form action="{{ route('updateItemForm') }}" method="POST" enctype="multipart/form-data"
                                     novalidate>
-                                    <div>
-                                        <button class="btn btn-sm btn-secondary">
-                                            <a href="/sg-backend/item/list" style="color: white;">Back</a>
-                                        </button>
-                                    </div>
+
                                     <input name="id" type="hidden" value="{{ $item->id }}" />
                                 @else
                                     <form action="{{ route('storeItemForm') }}" method="POST" enctype="multipart/form-data"

@@ -27,13 +27,13 @@
                         @endif
                         <div class="">
                             @if (isset($account))
+                            <div>
+                                <button class="btn btn-sm btn-secondary">
+                                    <a href="/sg-backend/account/list/cashier" style="color: white;">Back</a>
+                                </button>
+                            </div>
                                 <form action="{{ route('updateAccountForm') }}" method="POST" enctype="multipart/form-data"
                                     novalidate>
-                                    <div>
-                                        <button class="btn btn-sm btn-secondary">
-                                            <a href="/sg-backend/item/list" style="color: white;">Back</a>
-                                        </button>
-                                    </div>
                                     <input name="id" type="hidden" value="{{ $account->id }}" />
                                 @else
                                     <form action="{{ route('storeAccountForm') }}" method="POST"

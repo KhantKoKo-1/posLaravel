@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Facade;
+use Arcanedev\LogViewer\LogViewerServiceProvider;
 
 return [
 
@@ -164,7 +165,7 @@ return [
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
         Intervention\Image\ImageServiceProvider::class,
-
+        LogViewerServiceProvider::class,
         /*
          * Package Service Providers...
          */

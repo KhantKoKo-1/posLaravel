@@ -46,7 +46,7 @@
                                     <tbody>
                                         @foreach ($accounts as $account)
                                             <tr class="even pointer">
-                                                <td class="a-center ">
+                                                <td class="">
                                                     <input type="checkbox" class="flat" name="table_records">
                                                 </td>
                                                 <td class=" ">{{ $account->username }}</td>

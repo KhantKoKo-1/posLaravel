@@ -1768,7 +1768,7 @@ function init_daterangepicker_single_call() {
 
 
     $('#start_date_picker').click(function() {
-        let start = $('#end_date_picker').val()
+        let start = $('#end_date_picker').val()||moment();
         start_date_picker.data('daterangepicker').maxDate = moment(start, 'MM/DD/YYYY').subtract(1, 'days');
         if (start_date_picker.data('daterangepicker').isShowing) {
             start_date_picker.data('daterangepicker').updateView();
