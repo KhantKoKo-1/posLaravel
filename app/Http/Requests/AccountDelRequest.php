@@ -2,9 +2,9 @@
 
 namespace App\Http\Requests;
 
+use App\ErrorMessages;
 use App\Rules\ShiftValidationRule;
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Validation\Rule;
 
 class AccountDelRequest extends FormRequest
 {
@@ -31,8 +31,8 @@ class AccountDelRequest extends FormRequest
     public function messages()
     {
         return [
-            'id.required' => 'Account id is required',
-            'id.numeric'  => 'Account id must be numeric',
+            'id.required' => ErrorMessages::REQUIRE_MESSAGE . 'Account Id',
+            'id.numeric'  => 'Account Id' . ErrorMessages::NUMERIC_MESSAGE,
         ];
     }
 }

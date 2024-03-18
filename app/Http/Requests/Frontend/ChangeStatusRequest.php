@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests\Frontend;
 
+use App\ErrorMessages;
 use Illuminate\Foundation\Http\FormRequest;
 
 class ChangeStatusRequest extends FormRequest
@@ -30,8 +31,8 @@ class ChangeStatusRequest extends FormRequest
     public function messages()
     {
         return [
-            'order_id.required' => 'Required order id .',
-            'status.required'   => 'Required Status .',
+            'order_id.required' => ErrorMessages::REQUIRE_MESSAGE . 'Order Id.',
+            'status.required'   => ErrorMessages::REQUIRE_MESSAGE . 'Status.',
         ];
     }
 }

@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use App\ErrorMessages;
 use App\Rules\CashAmountValid;
 use App\Rules\PromotionDateRule;
 use Illuminate\Foundation\Http\FormRequest;
@@ -35,26 +36,25 @@ class DiscountStoreRequest extends FormRequest
         if ($this->discount_type == 'percentage') {
             $rules['amount'] = ['required', 'numeric', 'max:100'];
         } else {
-            $rules['amount'] = ['required', 'numeric', 'gt:100',new CashAmountValid($this->item)];
+            $rules['amount'] = ['required', 'numeric', 'gt:99',new CashAmountValid($this->item)];
         }
-
         return $rules;
     }
 
     public function messages()
     {
         return [
-            'name.required'           => 'Please fill discount name .',
-            'discount_type.required'  => 'Please choose discount type .',
-            'amount.required'         => 'Please fill discount amount .',
-            'amount.numeric'          => 'Discount amount must be numeric .',
-            'amount.max'              => 'Discount percentage must between 0 and 100% ',
-            'start_date.required'     => 'Please fill discount start date .',
-            'start_date.date'         => 'Please fill valid date format .',
-            'end_date.required'       => 'Please fill discount end date .',
-            'end_date.date'           => 'Please fill valid date format .',
-            'end_date.after'          => 'End date is greater than start date .',
-            'item.required'           => 'Please choose discount item .',
+            'name.required'          => ErrorMessages::REQUIRE_MESSAGE . 'Discount Name.',
+            'discount_type.required' => ErrorMessages::CHOOSE_REQUIRE_MESSAGE . 'Discount Type.',
+            'amount.required'        => ErrorMessages::REQUIRE_MESSAGE . 'Discount Amount.',
+            'amount.numeric'         => 'Discount Amount' . ErrorMessages::NUMERIC_MESSAGE,
+            'amount.max'             => 'The Discount Percentage Must Be Between 0% And 100%.',
+            'start_date.required'    => ErrorMessages::REQUIRE_MESSAGE . 'Discount Start Date.',
+            'start_date.date'        => ErrorMessages::REQUIRE_MESSAGE . 'Valid Date Format.',
+            'end_date.required'      => ErrorMessages::REQUIRE_MESSAGE . 'Discount End Date.',
+            'end_date.date'          => ErrorMessages::REQUIRE_MESSAGE . 'Valid Date Format.',
+            'end_date.after'         => 'End Date Is Greater Than Start Date.',
+            'item.required'          => ErrorMessages::CHOOSE_REQUIRE_MESSAGE . 'Discount Item .',
         ];
     }
 }

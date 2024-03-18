@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use App\Constant;
+use App\ErrorMessages;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
@@ -66,16 +67,16 @@ class AccountUpdRequest extends FormRequest
     public function messages()
     {
         return [
-            'username.required'         => 'Please fill user name .',
-            'username.unique'           => 'UserName is already exists .',
-            'username.numeric'          => 'UserName must be numeric .',
-            'password.required'         => 'Please fill password .',
-            'password.numeric'          => 'password must be numeric .',
-            'password.min'              => 'Password must be at least 6 character.',
-            'confirm_password.required' => 'Please fill confirm password .',
-            'confirm_password.numeric'  => 'confirm_password must be numeric .',
-            'confirm_password.min'      => 'Confirm password must be at least 6 character.',
-            'confirm_password.same'     => 'The password and confirm password must be different.',
+            'username.required'         => ErrorMessages::REQUIRE_MESSAGE . 'Username.',
+            'username.unique'           => 'Username' . ErrorMessages::UNIQUE_MESSAGE,
+            'username.numeric'          => 'Username'. ErrorMessages::NUMERIC_MESSAGE,
+            'password.required'         => ErrorMessages::REQUIRE_MESSAGE . 'password .',
+            'password.numeric'          => 'Password' . ErrorMessages::NUMERIC_MESSAGE,
+            'password.min'              => 'Password' . ErrorMessages::PASSWORD_MIN_MESSAGE,
+            'confirm_password.required' => ErrorMessages::REQUIRE_MESSAGE . 'Confirm Password.',
+            'confirm_password.numeric'  => 'Confirm Password' . ErrorMessages::NUMERIC_MESSAGE,
+            'confirm_password.min'      => 'Confirm password' . ErrorMessages::PASSWORD_MIN_MESSAGE,
+            'confirm_password.same'     => 'The Password and Confirm password' . ErrorMessages::SAME_MESSAGE,
         ];
     }
 }

@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use App\ErrorMessages;
 use Illuminate\Foundation\Http\FormRequest;
 
 class AdminLoginRequest extends FormRequest
@@ -30,9 +31,9 @@ class AdminLoginRequest extends FormRequest
     public function messages()
     {
         return [
-            'username.required' => 'Username and password cannot be null .',
-            'password.required' => 'Please fill password .',
-            'password.min'      => 'Password must be at least 6 charater .',
+            'username.required' => ErrorMessages::REQUIRE_MESSAGE . 'Username.',
+            'password.required' => ErrorMessages::REQUIRE_MESSAGE . 'Password.',
+            'password.min'      => 'Password' . ErrorMessages::PASSWORD_MIN_MESSAGE,
         ];
     }
 }

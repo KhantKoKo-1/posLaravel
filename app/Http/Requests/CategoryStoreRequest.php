@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use App\ErrorMessages;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 
@@ -37,11 +38,11 @@ class CategoryStoreRequest extends FormRequest
     public function messages()
     {
         return [
-            'name.required'         => 'Please fill category name .',
-            'name.unique'           => 'Category name is already exists .',
+            'name.required'         => ErrorMessages::REQUIRE_MESSAGE . 'Category Name.',
+            'name.unique'           => 'Category Name' . ErrorMessages::UNIQUE_MESSAGE,
             'parent_id.required'    => 'Please select Parent-Category .',
-            'upload_photo.required' => 'Please upload photo.',
-            'upload_photo.mimes'    => 'Please fill valid photo type.',
+            'upload_photo.required' => ErrorMessages::IMAGE_REQUIRE_MESSAGE,
+            'upload_photo.mimes'    => ErrorMessages::INVALID_IMAGE_MESSAGE,
         ];
     }
 }

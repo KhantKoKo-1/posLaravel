@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests\Frontend;
 
+use App\ErrorMessages;
 use Illuminate\Foundation\Http\FormRequest;
 
 class StoreOrderRequest extends FormRequest
@@ -31,9 +32,9 @@ class StoreOrderRequest extends FormRequest
     public function messages()
     {
         return [
-            'item.required'      => 'Required Items .',
-            'sub_total.required' => 'Required Sub Total .',
-            'shift_id.required'  => 'Required Shift Id .',
+            'item.required'      => ErrorMessages::REQUIRE_MESSAGE . 'Items.',
+            'sub_total.required' => ErrorMessages::REQUIRE_MESSAGE . 'Sub Total.',
+            'shift_id.required'  => ErrorMessages::REQUIRE_MESSAGE . 'Required Shift Id.',
         ];
     }
 }

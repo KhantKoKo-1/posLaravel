@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests\Frontend;
 
+use App\ErrorMessages;
 use Illuminate\Foundation\Http\FormRequest;
 
 class OrderItemRequest extends FormRequest
@@ -29,8 +30,8 @@ class OrderItemRequest extends FormRequest
     public function messages()
     {
         return [
-            'item_id.required' => 'Required Item Id .',
-            'item_id.numeric'  => 'Item Id Must Be Numeric.',
+            'item_id.required' => ErrorMessages::REQUIRE_MESSAGE . 'Item Id.',
+            'item_id.numeric'  => 'Item Id' . ErrorMessages::NUMERIC_MESSAGE,
         ];
     }
 }

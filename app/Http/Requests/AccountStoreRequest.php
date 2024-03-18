@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use App\Constant;
+use App\ErrorMessages;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 
@@ -46,17 +47,22 @@ class AccountStoreRequest extends FormRequest
 
     public function messages()
     {
+        if($this->account_type == 'cashier') {
+            $name = 'Cashier Id.';
+        } else {
+            $name = 'Username.';
+        }
         return [
-            'username.required'         => 'Please fill user name .',
-            'username.unique'           => 'UserName is already exists .',
-            'username.numeric'          => 'UserName must be numeric .',
-            'password.required'         => 'Please fill password .',
-            'password.numeric'          => 'password must be numeric .',
-            'password.min'              => 'Password must be at least 6 character.',
-            'confirm_password.required' => 'Please fill confirm password .',
-            'confirm_password.numeric'  => 'confirm_password must be numeric .',
-            'confirm_password.min'      => 'Confirm password must be at least 6 character.',
-            'confirm_password.same'     => 'The password and confirm password must be same.',
+            'username.required'         => ErrorMessages::REQUIRE_MESSAGE . $name,
+            'username.unique'           => 'Username' . ErrorMessages::UNIQUE_MESSAGE,
+            'username.numeric'          => 'Username' . ErrorMessages::NUMERIC_MESSAGE,
+            'password.required'         => ErrorMessages::REQUIRE_MESSAGE . 'Password.',
+            'password.numeric'          => 'Password' . ErrorMessages::NUMERIC_MESSAGE,
+            'password.min'              => 'Password' . ErrorMessages::PASSWORD_MIN_MESSAGE,
+            'confirm_password.required' => ErrorMessages::REQUIRE_MESSAGE . 'Confirm Password.',
+            'confirm_password.numeric'  => 'confirm_password' . ErrorMessages::NUMERIC_MESSAGE,
+            'confirm_password.min'      => 'Confirm password' . ErrorMessages::PASSWORD_MIN_MESSAGE,
+            'confirm_password.same'     => 'The Password And Confirm Password' . ErrorMessages::SAME_MESSAGE,
         ];
     }
 }
