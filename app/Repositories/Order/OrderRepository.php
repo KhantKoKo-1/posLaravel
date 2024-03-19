@@ -24,7 +24,7 @@ class OrderRepository implements OrderRepositoryInterface
                     ->whereNull('item.deleted_at')
                     ->first();
         $discount_amount = DiscountItem::select(
-                        DB::raw('CASE 
+                        DB::raw('CASE
                                     WHEN discount_promotion.percentage IS NULL THEN discount_promotion.amount
                                     ELSE discount_promotion.percentage / 100 * ' . $item->price . '
                                 END AS discount_amount')
@@ -66,7 +66,16 @@ class OrderRepository implements OrderRepositoryInterface
                 $ins_detail_data['item_id'] = $detail_data['id'];
                 $ins_detail_data = Utility::saveCreated((array) $ins_detail_data, (bool) true);
                 $detail_res = OrderDetail::create($ins_detail_data);
+
                 if ($detail_res) {
+                    $item = Item::find($detail_data['id']);
+                    if ($item) {
+                        $item->quantity -= $detail_data['quantity'];
+                        $item->save();
+                    } else {
+                        throw new \Exception("Item with ID {$detail_data['id']} not found.");
+                    }
+
                     $response = ReturnMessage::OK;
                     DB::commit();
                 } else {
