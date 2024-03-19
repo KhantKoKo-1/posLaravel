@@ -2,7 +2,6 @@
 
 namespace App\Http\Requests\frontend;
 
-use App\ErrorMessages;
 use Illuminate\Foundation\Http\FormRequest;
 
 class GetItemRequest extends FormRequest
@@ -30,8 +29,8 @@ class GetItemRequest extends FormRequest
     public function messages()
     {
         return [
-            'category_id.required' => ErrorMessages::REQUIRE_MESSAGE . 'Category Id.',
-            'category_id.numeric'  => 'Category Id'. ErrorMessages::NUMERIC_MESSAGE,
+            'category_id.required' => 'Required Category Id .',
+            'category_id.numeric'  => 'Category Id Must Be Numeric.',
         ];
     }
 }

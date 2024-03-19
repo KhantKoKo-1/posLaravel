@@ -2,7 +2,6 @@
 
 namespace App\Http\Requests;
 
-use App\ErrorMessages;
 use Illuminate\Foundation\Http\FormRequest;
 
 class CashierLoginRequest extends FormRequest
@@ -31,11 +30,11 @@ class CashierLoginRequest extends FormRequest
     public function messages()
     {
         return [
-            'username.required' => ErrorMessages::REQUIRE_MESSAGE . 'Username.',
-            'username.numeric'  => 'Username' . ErrorMessages::NUMERIC_MESSAGE,
-            'password.required' => ErrorMessages::REQUIRE_MESSAGE . 'Password .',
-            'password.min'      => 'The Password' . ErrorMessages::PASSWORD_MIN_MESSAGE,
-            'password.numeric'  => 'Password' . ErrorMessages::NUMERIC_MESSAGE,
+            'username.required' => 'Please fill username .',
+            'username.numeric'  => 'Username must be numeric .',
+            'password.required' => 'Please fill password .',
+            'password.min'      => 'The password must be at least 6 digits.',
+            'password.numeric'  => 'Password must be numeric .',
         ];
     }
 }

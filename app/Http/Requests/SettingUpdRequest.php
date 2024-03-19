@@ -2,7 +2,6 @@
 
 namespace App\Http\Requests;
 
-use App\ErrorMessages;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 
@@ -42,14 +41,14 @@ class SettingUpdRequest extends FormRequest
     public function messages()
     {
         return [
-            'company_name.required'    => ErrorMessages::REQUIRE_MESSAGE . 'Company Name.',
-            'company_name.unique'      => 'Company Name' . ErrorMessages::UNIQUE_MESSAGE,
-            'company_phone.required'   => ErrorMessages::REQUIRE_MESSAGE . 'Company Phone.',
-            'company_email.required'   => ErrorMessages::REQUIRE_MESSAGE . 'Company Email.',
-            'company_email.email'      => ErrorMessages::WRONG_FORMAT_MESSAGE . 'Email.',
-            'company_address.required' => ErrorMessages::REQUIRE_MESSAGE . 'Company Address.',
-            'upload_photo.required_if' => ErrorMessages::IMAGE_REQUIRE_MESSAGE,
-            'upload_photo.mimes'       => ErrorMessages::INVALID_IMAGE_MESSAGE,
+            'company_name.required'    => 'Please fill company name .',
+            'company_name.unique'      => 'Company name is already exists .',
+            'company_phone.required'   => 'Please fill company phone .',
+            'company_email.required'   => 'Please fill company email .',
+            'company_email.email'      => 'Wrong email format .',
+            'company_address.required' => 'Please fill company cddress .',
+            'upload_photo.required_if' => 'Please upload photo.',
+            'upload_photo.mimes'       => 'Please fill valid photo type.',
         ];
     }
 }

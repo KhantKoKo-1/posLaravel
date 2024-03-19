@@ -2,9 +2,9 @@
 
 namespace App\Http\Requests;
 
-use App\ErrorMessages;
 use App\Rules\ShiftValidationRule;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class SettingDelRequest extends FormRequest
 {
@@ -31,8 +31,8 @@ class SettingDelRequest extends FormRequest
     public function messages()
     {
         return [
-            'id.required' => ErrorMessages::REQUIRE_MESSAGE . 'Setting Id.',
-            'id.numeric'  => 'Setting Id' . ErrorMessages::NUMERIC_MESSAGE,
+            'id.required' => 'Setting id is required',
+            'id.numeric'  => 'Setting id must be numeric',
         ];
     }
 }

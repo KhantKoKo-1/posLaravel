@@ -2,7 +2,6 @@
 
 namespace App\Http\Requests\Frontend;
 
-use App\ErrorMessages;
 use Illuminate\Foundation\Http\FormRequest;
 
 class FetchOrderItemRequest extends FormRequest
@@ -30,7 +29,7 @@ class FetchOrderItemRequest extends FormRequest
     public function messages()
     {
         return [
-            'order_id.required' => ErrorMessages::REQUIRE_MESSAGE . 'Order Id.',
+            'order_id.required' => 'Required Order Id .',
         ];
     }
 }

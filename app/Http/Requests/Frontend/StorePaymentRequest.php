@@ -2,7 +2,6 @@
 
 namespace App\Http\Requests\Frontend;
 
-use App\ErrorMessages;
 use Illuminate\Foundation\Http\FormRequest;
 
 class StorePaymentRequest extends FormRequest
@@ -33,10 +32,10 @@ class StorePaymentRequest extends FormRequest
     public function messages()
     {
         return [
-            'order_id.required' => ErrorMessages::REQUIRE_MESSAGE . 'Order Id.',
-            'shift_id.required' => ErrorMessages::REQUIRE_MESSAGE . 'Shift Id.',
-            'payment.required'  => ErrorMessages::REQUIRE_MESSAGE . 'Payment',
-            'refund.required'   => ErrorMessages::REQUIRE_MESSAGE . 'Refund.',
+            'order_id.required' => 'Required Order Id .',
+            'shift_id.required' => 'Required Shift Id .',
+            'payment.required'  => 'Required Payment .',
+            'refund.required'   => 'Required Refund .',
         ];
     }
-    }
+}

@@ -2,9 +2,9 @@
 
 namespace App\Http\Requests;
 
-use App\ErrorMessages;
 use App\Rules\ShiftValidationRule;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class CategoryDelRequest extends FormRequest
 {
@@ -31,8 +31,8 @@ class CategoryDelRequest extends FormRequest
     public function messages()
     {
         return [
-            'id.required' => ErrorMessages::REQUIRE_MESSAGE . 'Discount Id.',
-            'id.numeric'  => 'Discount Id' . ErrorMessages::NUMERIC_MESSAGE,
+            'id.required' => 'Discount id is required',
+            'id.numeric'  => 'Discount id must be numeric',
         ];
     }
 }

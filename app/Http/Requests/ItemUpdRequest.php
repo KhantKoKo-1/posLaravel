@@ -2,7 +2,6 @@
 
 namespace App\Http\Requests;
 
-use App\ErrorMessages;
 use App\Rules\ShiftValidationRule;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
@@ -40,12 +39,12 @@ class ItemUpdRequest extends FormRequest
     public function messages()
     {
         return [
-            'id.required'              => ErrorMessages::REQUIRE_MESSAGE . 'Item Id.',
-            'id.numeric'               => 'Item Id' . ErrorMessages::NUMERIC_MESSAGE,
-            'name.required'            => ErrorMessages::REQUIRE_MESSAGE . 'Item Name.',
-            'name.unique'              => 'Item Name' . ErrorMessages::UNIQUE_MESSAGE,
-            'upload_photo.required_if' => ErrorMessages::IMAGE_REQUIRE_MESSAGE,
-            'upload_photo.mimes'       => ErrorMessages::INVALID_IMAGE_MESSAGE,
+            'id.required'              => 'Item id is required',
+            'id.numeric'               => 'Item id must be numeric',
+            'name.required'            => 'Please fill Item name .',
+            'name.unique'              => 'Item name is already exists .',
+            'upload_photo.required_if' => 'Please upload photo.',
+            'upload_photo.mimes'       => 'Please fill valid photo type.',
         ];
     }
 }

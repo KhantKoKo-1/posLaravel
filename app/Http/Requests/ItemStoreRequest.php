@@ -2,7 +2,6 @@
 
 namespace App\Http\Requests;
 
-use App\ErrorMessages;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 
@@ -40,13 +39,13 @@ class ItemStoreRequest extends FormRequest
     public function messages()
     {
         return [
-            'name.required'         => ErrorMessages::REQUIRE_MESSAGE . 'Item Name.',
+            'name.required'         => 'Please fill item name .',
             'name.unique'           => 'Item name is already exists .',
             'category_id.required'  => 'Please select parent category .',
-            'price.required'        => ErrorMessages::REQUIRE_MESSAGE . 'Price.',
-            'quantity.required'     => ErrorMessages::REQUIRE_MESSAGE . 'Quantity.',
-            'upload_photo.required' => ErrorMessages::IMAGE_REQUIRE_MESSAGE,
-            'upload_photo.mimes'    => ErrorMessages::INVALID_IMAGE_MESSAGE,
+            'price.required'        => 'Please fill price .',
+            'quantity.required'     => 'Please fill quantity .',
+            'upload_photo.required' => 'Please upload photo.',
+            'upload_photo.mimes'    => 'Please select valid photo type.',
         ];
     }
 }

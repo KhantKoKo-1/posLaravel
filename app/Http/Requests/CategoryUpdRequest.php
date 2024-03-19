@@ -2,7 +2,7 @@
 
 namespace App\Http\Requests;
 
-use App\ErrorMessages;
+use App\Rules\ShiftValidationRule;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 
@@ -38,12 +38,12 @@ class CategoryUpdRequest extends FormRequest
     public function messages()
     {
         return [
-            'id.required'              => ErrorMessages::REQUIRE_MESSAGE . 'Category Id.',
-            'id.numeric'               => 'Category Id' . ErrorMessages::NUMERIC_MESSAGE,
-            'name.required'            => ErrorMessages::REQUIRE_MESSAGE . 'Category Name.',
-            'name.unique'              => 'Category name' . ErrorMessages::UNIQUE_MESSAGE,
-            'upload_photo.required_if' => ErrorMessages::IMAGE_REQUIRE_MESSAGE,
-            'upload_photo.mimes'       => ErrorMessages::INVALID_IMAGE_MESSAGE,
+            'id.required'              => 'Category id is required',
+            'id.numeric'               => 'Category id must be numeric',
+            'name.required'            => 'Please fill category name .',
+            'name.unique'              => 'Category name is already exists .',
+            'upload_photo.required_if' => 'Please upload photo.',
+            'upload_photo.mimes'       => 'Please fill valid photo type.',
         ];
     }
 }

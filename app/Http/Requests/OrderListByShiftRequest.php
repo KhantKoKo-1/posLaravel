@@ -2,8 +2,9 @@
 
 namespace App\Http\Requests;
 
-use App\ErrorMessages;
+use App\Rules\ShiftValidationRule;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class OrderListByShiftRequest extends FormRequest
 {
@@ -30,8 +31,8 @@ class OrderListByShiftRequest extends FormRequest
     public function messages()
     {
         return [
-            'shift_id.required' => ErrorMessages::REQUIRE_MESSAGE . 'Shift Id.',
-            'shift_id.numeric'  => 'Shift Id' . ErrorMessages::NUMERIC_MESSAGE,
+            'shift_id.required' => 'Shift id is required',
+            'shift_id.numeric'  => 'Shift id must be numeric',
         ];
     }
 }

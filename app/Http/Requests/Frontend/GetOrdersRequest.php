@@ -2,7 +2,6 @@
 
 namespace App\Http\Requests\Frontend;
 
-use App\ErrorMessages;
 use Illuminate\Foundation\Http\FormRequest;
 
 class GetOrdersRequest extends FormRequest
@@ -30,7 +29,7 @@ class GetOrdersRequest extends FormRequest
     public function messages()
     {
         return [
-            'shift_id.required' => ErrorMessages::REQUIRE_MESSAGE . 'Shift Id.',
+            'shift_id.required' => 'Required Shift Id .',
         ];
     }
 }
