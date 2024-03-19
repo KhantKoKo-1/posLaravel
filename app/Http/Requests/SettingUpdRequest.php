@@ -2,10 +2,10 @@
 
 namespace App\Http\Requests;
 
-use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
+use App\Http\Requests\BaseFormRequest;
 
-class SettingUpdRequest extends FormRequest
+class SettingUpdRequest extends BaseFormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -37,18 +37,5 @@ class SettingUpdRequest extends FormRequest
             'upload_photo'    => ['required_if:has_image,1', 'image', 'mimes:jpeg,png,jpg,gif'],
         ];
     }
-
-    public function messages()
-    {
-        return [
-            'company_name.required'    => 'Please fill company name .',
-            'company_name.unique'      => 'Company name is already exists .',
-            'company_phone.required'   => 'Please fill company phone .',
-            'company_email.required'   => 'Please fill company email .',
-            'company_email.email'      => 'Wrong email format .',
-            'company_address.required' => 'Please fill company cddress .',
-            'upload_photo.required_if' => 'Please upload photo.',
-            'upload_photo.mimes'       => 'Please fill valid photo type.',
-        ];
-    }
+    protected $attributeName = 'setting';
 }

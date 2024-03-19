@@ -28,11 +28,5 @@ class AccountDelRequest extends FormRequest
         ];
     }
 
-    public function messages()
-    {
-        return [
-            'id.required' => 'Account id is required',
-            'id.numeric'  => 'Account id must be numeric',
-        ];
-    }
+    protected $attributeName = 'account';
 }

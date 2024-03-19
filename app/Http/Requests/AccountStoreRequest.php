@@ -3,10 +3,10 @@
 namespace App\Http\Requests;
 
 use App\Constant;
-use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
+use App\Http\Requests\BaseFormRequest;
 
-class AccountStoreRequest extends FormRequest
+class AccountStoreRequest extends BaseFormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -32,7 +32,7 @@ class AccountStoreRequest extends FormRequest
                                             if ($account_type === 'admin') {
                                                 $query->where('role', Constant::ADMIN_ROLE);
                                             } else {
-                                                $query->where('role', Constant::CASHIER_ROLE); 
+                                                $query->where('role', Constant::CASHIER_ROLE);
                                             }
                                             $query->whereNull('deleted_at');
                                         }),
@@ -44,19 +44,5 @@ class AccountStoreRequest extends FormRequest
         return $rules;
     }
 
-    public function messages()
-    {
-        return [
-            'username.required'         => 'Please fill user name .',
-            'username.unique'           => 'UserName is already exists .',
-            'username.numeric'          => 'UserName must be numeric .',
-            'password.required'         => 'Please fill password .',
-            'password.numeric'          => 'password must be numeric .',
-            'password.min'              => 'Password must be at least 6 character.',
-            'confirm_password.required' => 'Please fill confirm password .',
-            'confirm_password.numeric'  => 'confirm_password must be numeric .',
-            'confirm_password.min'      => 'Confirm password must be at least 6 character.',
-            'confirm_password.same'     => 'The password and confirm password must be same.',
-        ];
-    }
+    protected $attributeName = 'username';
 }

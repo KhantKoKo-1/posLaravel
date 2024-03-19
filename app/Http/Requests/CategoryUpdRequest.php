@@ -2,11 +2,11 @@
 
 namespace App\Http\Requests;
 
-use App\Rules\ShiftValidationRule;
-use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
+use App\Http\Requests\BaseFormRequest;
 
-class CategoryUpdRequest extends FormRequest
+
+class CategoryUpdRequest extends BaseFormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -35,15 +35,5 @@ class CategoryUpdRequest extends FormRequest
         ];
     }
 
-    public function messages()
-    {
-        return [
-            'id.required'              => 'Category id is required',
-            'id.numeric'               => 'Category id must be numeric',
-            'name.required'            => 'Please fill category name .',
-            'name.unique'              => 'Category name is already exists .',
-            'upload_photo.required_if' => 'Please upload photo.',
-            'upload_photo.mimes'       => 'Please fill valid photo type.',
-        ];
-    }
+    protected $attributeName = 'category';
 }

@@ -3,12 +3,13 @@
 namespace App\Http\Requests;
 
 use App\Constant;
-use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Validation\Rule;
+use App\Http\Requests\BaseFormRequest;
 
-class AccountUpdRequest extends FormRequest
+
+class AccountUpdRequest extends BaseFormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -35,7 +36,7 @@ class AccountUpdRequest extends FormRequest
                         if ($account_type === 'admin') {
                             $query->where('role', Constant::ADMIN_ROLE);
                         } else {
-                            $query->where('role', Constant::CASHIER_ROLE); 
+                            $query->where('role', Constant::CASHIER_ROLE);
                         }
                         $query->whereNull('deleted_at');
                     })->ignore(request('id')),
@@ -44,7 +45,7 @@ class AccountUpdRequest extends FormRequest
             return $rules;
         }
 
-        if(request('editType') == 'password'){ 
+        if(request('editType') == 'password'){
             $rules['old_password'] = [
                 'required',
                 function ($attribute, $value, $fail) {
@@ -63,19 +64,5 @@ class AccountUpdRequest extends FormRequest
         }
     }
 
-    public function messages()
-    {
-        return [
-            'username.required'         => 'Please fill user name .',
-            'username.unique'           => 'UserName is already exists .',
-            'username.numeric'          => 'UserName must be numeric .',
-            'password.required'         => 'Please fill password .',
-            'password.numeric'          => 'password must be numeric .',
-            'password.min'              => 'Password must be at least 6 character.',
-            'confirm_password.required' => 'Please fill confirm password .',
-            'confirm_password.numeric'  => 'confirm_password must be numeric .',
-            'confirm_password.min'      => 'Confirm password must be at least 6 character.',
-            'confirm_password.same'     => 'The password and confirm password must be different.',
-        ];
-    }
+    protected $attributeName = 'username';
 }

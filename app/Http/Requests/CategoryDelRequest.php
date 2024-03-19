@@ -2,11 +2,11 @@
 
 namespace App\Http\Requests;
 
-use App\Rules\ShiftValidationRule;
-use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
+use App\Rules\ShiftValidationRule;
+use App\Http\Requests\BaseFormRequest;
 
-class CategoryDelRequest extends FormRequest
+class CategoryDelRequest extends BaseFormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -28,11 +28,5 @@ class CategoryDelRequest extends FormRequest
         ];
     }
 
-    public function messages()
-    {
-        return [
-            'id.required' => 'Discount id is required',
-            'id.numeric'  => 'Discount id must be numeric',
-        ];
-    }
+    protected $attributeName = 'category';
 }

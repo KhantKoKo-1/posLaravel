@@ -2,9 +2,9 @@
 
 namespace App\Http\Requests;
 
-use Illuminate\Foundation\Http\FormRequest;
+use App\Http\Requests\BaseFormRequest;
 
-class CashierLoginRequest extends FormRequest
+class CashierLoginRequest extends BaseFormRequest
 {
     /**
      * Determine if the user is authorized to make this request.

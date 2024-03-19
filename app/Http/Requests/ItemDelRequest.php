@@ -28,11 +28,5 @@ class ItemDelRequest extends FormRequest
         ];
     }
 
-    public function messages()
-    {
-        return [
-            'id.required' => 'Category id is required',
-            'id.numeric'  => 'Category id must be numeric',
-        ];
-    }
+    protected $attributeName = 'item';
 }

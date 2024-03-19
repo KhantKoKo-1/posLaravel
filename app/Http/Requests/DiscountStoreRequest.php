@@ -4,9 +4,9 @@ namespace App\Http\Requests;
 
 use App\Rules\CashAmountValid;
 use App\Rules\PromotionDateRule;
-use Illuminate\Foundation\Http\FormRequest;
+use App\Http\Requests\BaseFormRequest;
 
-class DiscountStoreRequest extends FormRequest
+class DiscountStoreRequest extends BaseFormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -41,20 +41,5 @@ class DiscountStoreRequest extends FormRequest
         return $rules;
     }
 
-    public function messages()
-    {
-        return [
-            'name.required'           => 'Please fill discount name .',
-            'discount_type.required'  => 'Please choose discount type .',
-            'amount.required'         => 'Please fill discount amount .',
-            'amount.numeric'          => 'Discount amount must be numeric .',
-            'amount.max'              => 'Discount percentage must between 0 and 100% ',
-            'start_date.required'     => 'Please fill discount start date .',
-            'start_date.date'         => 'Please fill valid date format .',
-            'end_date.required'       => 'Please fill discount end date .',
-            'end_date.date'           => 'Please fill valid date format .',
-            'end_date.after'          => 'End date is greater than start date .',
-            'item.required'           => 'Please choose discount item .',
-        ];
-    }
+    protected $attributeName = 'discount';
 }

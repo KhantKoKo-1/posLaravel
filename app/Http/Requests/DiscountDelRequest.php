@@ -3,9 +3,10 @@
 namespace App\Http\Requests;
 
 use App\Rules\ShiftValidationRule;
-use Illuminate\Foundation\Http\FormRequest;
+use App\Http\Requests\BaseFormRequest;
 
-class DiscountDelRequest extends FormRequest
+
+class DiscountDelRequest extends BaseFormRequest
 {
     /**
      * Determine if the user is authorized to make this request.

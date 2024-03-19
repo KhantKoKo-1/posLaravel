@@ -2,10 +2,11 @@
 
 namespace App\Http\Requests;
 
-use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
+use App\Http\Requests\BaseFormRequest;
 
-class CategoryStoreRequest extends FormRequest
+
+class CategoryStoreRequest extends BaseFormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -34,14 +35,5 @@ class CategoryStoreRequest extends FormRequest
         ];
     }
 
-    public function messages()
-    {
-        return [
-            'name.required'         => 'Please fill category name .',
-            'name.unique'           => 'Category name is already exists .',
-            'parent_id.required'    => 'Please select Parent-Category .',
-            'upload_photo.required' => 'Please upload photo.',
-            'upload_photo.mimes'    => 'Please fill valid photo type.',
-        ];
-    }
+    protected $attributeName = 'category';
 }

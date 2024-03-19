@@ -2,11 +2,11 @@
 
 namespace App\Http\Requests;
 
-use App\Rules\ShiftValidationRule;
-use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
+use App\Rules\ShiftValidationRule;
+use App\Http\Requests\BaseFormRequest;
 
-class SettingDelRequest extends FormRequest
+class SettingDelRequest extends BaseFormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -28,11 +28,5 @@ class SettingDelRequest extends FormRequest
         ];
     }
 
-    public function messages()
-    {
-        return [
-            'id.required' => 'Setting id is required',
-            'id.numeric'  => 'Setting id must be numeric',
-        ];
-    }
+    protected $attributeName = 'setting';
 }

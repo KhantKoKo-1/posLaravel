@@ -2,10 +2,10 @@
 
 namespace App\Http\Requests;
 
-use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
+use App\Http\Requests\BaseFormRequest;
 
-class ItemStoreRequest extends FormRequest
+class ItemStoreRequest extends BaseFormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -36,16 +36,5 @@ class ItemStoreRequest extends FormRequest
         ];
     }
 
-    public function messages()
-    {
-        return [
-            'name.required'         => 'Please fill item name .',
-            'name.unique'           => 'Item name is already exists .',
-            'category_id.required'  => 'Please select parent category .',
-            'price.required'        => 'Please fill price .',
-            'quantity.required'     => 'Please fill quantity .',
-            'upload_photo.required' => 'Please upload photo.',
-            'upload_photo.mimes'    => 'Please select valid photo type.',
-        ];
-    }
+    protected $attributeName = 'item';
 }

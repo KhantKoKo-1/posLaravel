@@ -142,8 +142,7 @@
 
                             <div class="field item form-group">
                                 <label for="single_cal2"
-                                    class="col-form-label col-md-3 col-sm-3  label-align">Description<span
-                                        class="required">*</span></label>
+                                    class="col-form-label col-md-3 col-sm-3  label-align">Description</label>
                                 <div class="col-md-6 col-sm-6">
                                     <textarea id="description" class="form-control" name="description">{{ old('description', isset($discount) ? $discount->description : '') }}</textarea>
                                 </div>

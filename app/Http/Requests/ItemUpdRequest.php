@@ -2,11 +2,11 @@
 
 namespace App\Http\Requests;
 
-use App\Rules\ShiftValidationRule;
-use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
+use App\Rules\ShiftValidationRule;
+use App\Http\Requests\BaseFormRequest;
 
-class ItemUpdRequest extends FormRequest
+class ItemUpdRequest extends BaseFormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -31,20 +31,13 @@ class ItemUpdRequest extends FormRequest
                                     $query->whereNull('deleted_at');
                                 })->ignore(request('id')),
                             ],
+            'category_id'  => ['required'],
+            'price'        => ['required'],
+            'quantity'     => ['required'],
             'upload_photo' => [ 'required_if:has_image,1','image', 'mimes:jpeg,png,jpg,gif'],
             'shift'        => [new ShiftValidationRule()],
         ];
     }
 
-    public function messages()
-    {
-        return [
-            'id.required'              => 'Item id is required',
-            'id.numeric'               => 'Item id must be numeric',
-            'name.required'            => 'Please fill Item name .',
-            'name.unique'              => 'Item name is already exists .',
-            'upload_photo.required_if' => 'Please upload photo.',
-            'upload_photo.mimes'       => 'Please fill valid photo type.',
-        ];
-    }
+    protected $attributeName = 'item';
 }
