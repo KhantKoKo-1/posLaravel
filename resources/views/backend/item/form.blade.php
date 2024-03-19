@@ -117,8 +117,7 @@
                             </div>
                         </div>
 
-                        <input class="hide" type="file" id="fileInput" name="upload_photo"
-                            onchange='previewImage(this)'>
+                        <input class="hide" type="file" id="fileInput" name="upload_photo" onchange='previewImage(this)'>
                         <div class="ln_solid">
                             <div class="form-group">
                                 <div class="col-md-6 offset-md-3">

@@ -51,9 +51,7 @@
                                                 class="btn btn-success"><i class="fa fa-search"></i>&nbsp;Detail</a>
                                         </td>
                                         <td>
-                                            <a class="btn btn-outline-success"
-                                                href="{{ url('order_edit/') }}/@{{ orderData.id }}"
-                                                ng-if="orderData.status === 0">
+                                            <a class="btn btn-outline-success" href="{{ url('order_edit/') }}/@{{ orderData.id }}" ng-if="orderData.status === 0">
                                                 <i class="fas fa-credit-card"></i>&nbsp;Edit
                                             </a>
 

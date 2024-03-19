@@ -23,14 +23,14 @@ class BaseFormRequest extends FormRequest
         return [
             'name.required'             => 'Please fill ' . $this->attributeName . ' name.',
             'name.unique'               => 'The ' . $this->attributeName . ' name already exists.',
-            'parent_id.required'        => 'Please select parent category .',
+            'parent_id.required'        => 'Please select parent category.',
             'upload_photo.required'     => 'Please upload ' . $this->attributeName . ' image.',
             'upload_photo.mimes'        => 'Please upload valid image type.',
             'upload_photo.required_if'  => 'Please upload photo.',
 
-            'category_id.required'      => 'Please select parent category .',
-            'price.required'            => 'Please fill '. $this->attributeName .' price .',
-            'quantity.required'         => 'Please fill '. $this->attributeName .' quantity .',
+            'category_id.required'      => 'Please select parent category.',
+            'price.required'            => 'Please fill '. $this->attributeName .' price.',
+            'quantity.required'         => 'Please fill '. $this->attributeName .' quantity.',
 
             'discount_type.required'    => 'Please choose ' . $this->attributeName . ' type.',
             'amount.required'           => 'Please fill ' . $this->attributeName . ' amount.',
@@ -50,7 +50,7 @@ class BaseFormRequest extends FormRequest
 
             'newPassword.required'      => 'Please fill password.',
             'confirmPassword.required'  => 'Please fill confim password.' ,
-            'confirmPassword.same'      => 'New password and confirm password did not match',
+            'confirmPassword.same'      => 'New password and confirm password did not match.',
 
             'id.required'               => 'The ' . $this->attributeName .' id is required.',
             'id.numeric'                => 'The ' . $this->attributeName .' id must be numeric.',
@@ -72,7 +72,6 @@ class BaseFormRequest extends FormRequest
             'confirm_password.numeric'  => 'Confirm_password must be numeric.',
             'confirm_password.min'      => 'Confirm password must be at least 6 character.',
             'confirm_password.same'     => 'The password and confirm password must be same.',
-
         ];
     }
 }

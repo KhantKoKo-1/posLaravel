@@ -41,7 +41,7 @@ class OrderRepository implements OrderRepositoryInterface
         if (!isset($discount_amount)) {
             $item['discount_amount'] = 0;
         } else {
-            $item['discount_amount'] = $discount_amount->discount_amount;
+            $item['discount_amount'] = (int)($discount_amount->discount_amount);
         }
         return $item;
     }
@@ -75,7 +75,6 @@ class OrderRepository implements OrderRepositoryInterface
                     } else {
                         throw new \Exception("Item with ID {$detail_data['id']} not found.");
                     }
-
                     $response = ReturnMessage::OK;
                     DB::commit();
                 } else {

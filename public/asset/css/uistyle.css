@@ -352,8 +352,9 @@ img {
  Permission
  -------------------------------------------*/
 .table td, .table th {
-    padding: 4px .75rem;
-    font-size: 12px;
+	text-align: center;
+    /* padding: 4px .75rem;
+    font-size: 12px; */
 }
 .per-table th ,
 .invoice-table th {

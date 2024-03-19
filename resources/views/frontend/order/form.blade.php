@@ -22,11 +22,6 @@
                     </button>
                     <input type="text" class="form-control" placeholder="Search" ng-model="searchData"
                         ng-keyup="searchItem()" style="margin-left:10px;">
-                    <div class="input-group-append">
-                        <button class="btn btn-primary" type="submit">
-                            <i class="fa fa-search"></i>
-                        </button>
-                    </div>
                 </div>
                 <span id="items">
                     <div class="row">
@@ -84,21 +79,16 @@
                             <tbody>
                                 <tr ng-repeat="itemData in itemDatas">
                                     <td>
-                                        <figure class="media">
-                                            <figcaption class="media-body">
-                                                <h6 class="title text-truncate">@{{ itemData.name }}</h6>
-                                            </figcaption>
-                                        </figure>
+                                        <h6 class="title text-truncate">@{{ itemData.name }}</h6>
                                     </td>
                                     <td class="text-center">
                                         <div class="m-btn-group m-btn-group--pill btn-group mr-2" role="group"
                                             aria-label="...">
-                                            <button type="button" class="m-btn btn btn-sm btn-default"
-                                                ng-click="itemQuantity('minus',itemData.id)"><i
+                                            <button type="button" ng-class="{ 'm-btn btn btn-sm btn-primary': itemData.quantity != 1, 'm-btn btn btn-sm btn-default': itemData.quantity == 1 }" ng-click="itemQuantity('minus',itemData.id)"><i
                                                     class="fa fa-minus fa-sm"></i></button>
-                                            <button type="button" class="m-btn btn btn-sm btn-default"
+                                            <button style="font-weight: bold; color: #000;" type="button" class="m-btn btn btn-sm btn-default"
                                                 disabled>@{{ itemData.quantity }}</button>
-                                            <button type="button" class="m-btn btn btn-sm btn-default"
+                                            <button type="button" class="m-btn btn btn-sm btn-danger"
                                                 ng-click="itemQuantity('plus',itemData.id)"><i
                                                     class="fa fa-plus"></i></button>
                                         </div>
@@ -129,13 +119,16 @@
                 </div> <!-- card.// -->
                 <div class="box">
                     <dl class="dlist-align">
+                        <dt>Total: </dt>
+                        <dd class="text-right">@{{ totalPrice }}</dd>
+                    </dl>
+                    <dl class="dlist-align">
                         <dt>Discount: </dt>
                         <dd class="text-right">@{{ totalDiscount }}</dd>
                     </dl>
-
                     <dl class="dlist-align">
                         <dt>Sub Total: </dt>
-                        <dd class="text-right">@{{ subTotal }}</dd>
+                        <dd class="text-right h4 b">@{{ subTotal }}</dd>
                     </dl>
                     <div class="row">
                         <div class="col-md-5" style="margin-left:60%;">

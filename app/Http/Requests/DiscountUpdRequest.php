@@ -37,7 +37,6 @@ class DiscountUpdRequest extends BaseFormRequest
         } else {
             $rules['amount'] = ['required', 'numeric', 'gt:100',new CashAmountValid($this->item)];
         }
-
         return $rules;
     }
 
