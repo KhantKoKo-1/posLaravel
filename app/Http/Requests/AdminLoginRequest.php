@@ -26,13 +26,6 @@ class AdminLoginRequest extends BaseFormRequest
             'password' => ['required','min:6'],
         ];
     }
+    protected $attributeName = 'username';
 
-    public function messages()
-    {
-        return [
-            'username.required' => 'Username and password cannot be null .',
-            'password.required' => 'Please fill password .',
-            'password.min'      => 'Password must be at least 6 charater .',
-        ];
-    }
 }

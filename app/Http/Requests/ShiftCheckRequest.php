@@ -28,8 +28,5 @@ class ShiftCheckRequest extends FormRequest
         ];
     }
 
-    public function messages()
-    {
-        return [];
-    }
+    protected $attributeName = 'shift';
 }

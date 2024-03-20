@@ -28,9 +28,9 @@ class BaseFormRequest extends FormRequest
             'upload_photo.mimes'        => 'Please upload valid image type.',
             'upload_photo.required_if'  => 'Please upload photo.',
 
-            'category_id.required'      => 'Please select parent category .',
-            'price.required'            => 'Please fill '. $this->attributeName .' price .',
-            'quantity.required'         => 'Please fill '. $this->attributeName .' quantity .',
+            'category_id.required'      => 'Please select parent category.',
+            'price.required'            => 'Please fill '. $this->attributeName .' price.',
+            'quantity.required'         => 'Please fill '. $this->attributeName .' quantity.',
 
             'discount_type.required'    => 'Please choose ' . $this->attributeName . ' type.',
             'amount.required'           => 'Please fill ' . $this->attributeName . ' amount.',
@@ -50,10 +50,13 @@ class BaseFormRequest extends FormRequest
 
             'newPassword.required'      => 'Please fill password.',
             'confirmPassword.required'  => 'Please fill confim password.' ,
-            'confirmPassword.same'      => 'New password and confirm password did not match',
+            'confirmPassword.same'      => 'New password and confirm password did not match.',
 
             'id.required'               => 'The ' . $this->attributeName .' id is required.',
             'id.numeric'                => 'The ' . $this->attributeName .' id must be numeric.',
+
+            'shift_id.required'         => $this->attributeName .' id is required',
+            'shift_id.numeric'          => $this->attributeName .' id must be numeric',
 
             'company_name.required'     => 'Please fill '. $this->attributeName .' name.',
             'company_name.unique'       => 'The'. $this->attributeName .' name is already exists.',
@@ -65,7 +68,7 @@ class BaseFormRequest extends FormRequest
             'username.unique'           => 'The ' . $this->attributeName .' already exists.',
             'username.numeric'          => 'The ' . $this->attributeName . ' must be numeric.',
             'password.required'         => 'Please fill password.',
-            'password.numeric'          => 'password must be numeric .',
+            'password.numeric'          => 'password must be numeric.',
 
             'password.min'              => 'The password must be at least 6 character.',
             'confirm_password.required' => 'Please fill confirm password.',

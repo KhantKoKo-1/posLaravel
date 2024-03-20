@@ -73,6 +73,6 @@ class PromotionDateRule implements Rule
     public function message()
     {
         $itemNamesString = implode(', ', $this->itemNames);
-        return "Promotion date is already exists for the following items: {$itemNamesString}.";
+        return "Promotion date already exists for the following items: {$itemNamesString}.";
     }
 }

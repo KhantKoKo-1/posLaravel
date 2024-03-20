@@ -27,14 +27,5 @@ class CashierLoginRequest extends BaseFormRequest
         ];
     }
 
-    public function messages()
-    {
-        return [
-            'username.required' => 'Please fill username .',
-            'username.numeric'  => 'Username must be numeric .',
-            'password.required' => 'Please fill password .',
-            'password.min'      => 'The password must be at least 6 digits.',
-            'password.numeric'  => 'Password must be numeric .',
-        ];
-    }
+    protected $attributeName = 'username';
 }

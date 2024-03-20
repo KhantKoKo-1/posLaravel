@@ -28,11 +28,5 @@ class OrderListByShiftRequest extends FormRequest
         ];
     }
 
-    public function messages()
-    {
-        return [
-            'shift_id.required' => 'Shift id is required',
-            'shift_id.numeric'  => 'Shift id must be numeric',
-        ];
-    }
+    protected $attributeName = 'Shift';
 }

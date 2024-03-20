@@ -28,11 +28,6 @@ class DiscountDelRequest extends BaseFormRequest
         ];
     }
 
-    public function messages()
-    {
-        return [
-            'id.required' => 'Discount id is required',
-            'id.numeric'  => 'Discount id must be numeric',
-        ];
-    }
+    protected $attributeName = 'discount';
+    
 }
