@@ -111,7 +111,7 @@ class OrderFrontendController extends Controller
 
     public function orderItem(OrderItemRequest $request)
     {
-        $screen = "Show orderItem Method From OrderFrontendController";
+        $screen = "Show OrderItem Method From OrderFrontendController";
         try {
             $item = $this->orderRepository->orderItem($request->item_id);
             $queryLog = DB::getQueryLog();
@@ -159,7 +159,6 @@ class OrderFrontendController extends Controller
     {
         $screen = "Show Change Status Method From OrderFrontendController";
         try {
-            $response = $this->orderRepository->changeOrderStatus((int) $request->order_id, (int) $request->status);
             $response = $this->orderRepository->changeOrderStatus((int) $request->order_id, (int) $request->status);
             if ($response == '200') {
                 $queryLog = DB::getQueryLog();

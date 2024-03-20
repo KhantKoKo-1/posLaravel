@@ -53,11 +53,11 @@
                             @if (!isset($editType) || $editType == 'account_info')
                                 <div class="field item form-group">
                                     <label for="username"
-                                        class="col-form-label col-md-3 col-sm-3  label-align">{{ isset($accountType) && $accountType === 'admin' ? 'Admin Name' : 'Cashier ID' }}<span
+                                        class="col-form-label col-md-3 col-sm-3  label-align">{{ isset($accountType) && $accountType === 'admin' ? 'Admin Name' : 'Cashier Name' }}<span
                                             class="required">*</span></label>
                                     <div class="col-md-6 col-sm-6">
                                         <input id="username"
-                                            type='text'
+                                            type='{{ !isset($accountType) || $accountType !== 'admin' ? 'number' : '' }}'
                                             class="form-control" name="username"
                                             value="{{ old('username', isset($account) ? $account->username : '') }}" />
                                     </div>
@@ -82,10 +82,11 @@
                             @if (!isset($editType) || $editType == 'password')
                                 <div class="field item form-group">
                                     <label for="password"
-                                        class="col-form-label col-md-3 col-sm-3  label-align">{{ isset($editType) ? 'New password' : 'Password' }}<span
+                                        class="col-form-label col-md-3 col-sm-3  label-align">{{ isset($editType) ? 'New password' : 'password' }}<span
                                             class="required">*</span></label>
                                     <div class="col-md-6 col-sm-6">
-                                        <input type="password" id="password" class="form-control" name="password" />
+                                        <input type="password" id="password" class="form-control" name="password"
+                                            value="" />
                                     </div>
                                     @if ($errors->has('password'))
                                         <span class="errorMessage">{{ $errors->first('password') }}</span>
@@ -148,20 +149,9 @@
     <!-- footer end -->
     @include('layouts.backend.partial.footer_end')
     <!-- /footer end -->
-    <?php 
-        if(!isset($accountType) || $accountType == 'cashier') {
-        ?>
+
     <!-- jquery is here -->
-        <script>
-        $('#username').on('input', function() {
-            let inputValue = $(this).val();
-            inputValue = inputValue.replace(/\D/g,'');
-            $(this).val(inputValue);
-         });
-        </script>    
     <!-- jquery end -->
-    <?php
-    }?>
 
     @include('layouts.backend.partial.footer_end_html')
 @endsection

@@ -11,6 +11,7 @@ app.controller("myCtrl", function ($scope, $http) {
     $scope.checkResult = "";
     $scope.subTotal = 0;
     $scope.subDiscount = {};
+    $scope.totalPrice = 0;
     $scope.totalDiscount = 0;
     $scope.searchData = "";
     $scope.init = function ($id) {
@@ -159,6 +160,7 @@ app.controller("myCtrl", function ($scope, $http) {
     $scope.calculationSubTotable = function () {
         $scope.subTotal = 0;
         $scope.totalDiscount = 0;
+        $scope.totalPrice = 0;
         if ($scope.itemDatas.length === 0) {
             $scope.haveItem = false;
         } else {
@@ -169,27 +171,9 @@ app.controller("myCtrl", function ($scope, $http) {
             $scope.totalDiscount += parseInt(
                 $scope.itemDatas[i].discount_amount
             );
-        }
-    };
-
-    $scope.searchItem = function () {
-        let searchData = $scope.searchData;
-        if (searchData == "") {
-            $scope.showCategories = true;
-            $scope.showItem = false;
-            $scope.fetchCategory(0);
-        } else {
-            alert("here");
-            $scope.showCategories = false;
-            $scope.showItem = true;
-            console.log($scope.allItems);
-            $scope.items = $scope.allItems.filter((item) => {
-                console.log("item.name");
-                return (
-                    item.code_no.startsWith(searchData) ||
-                    item.name.startsWith(searchData)
-                );
-            });
+            $scope.totalPrice += parseInt(
+                $scope.itemDatas[i].price * $scope.itemDatas[i].quantity
+            );
         }
     };
 

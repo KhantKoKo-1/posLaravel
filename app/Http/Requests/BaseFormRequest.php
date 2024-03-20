@@ -23,7 +23,7 @@ class BaseFormRequest extends FormRequest
         return [
             'name.required'             => 'Please fill ' . $this->attributeName . ' name.',
             'name.unique'               => 'The ' . $this->attributeName . ' name already exists.',
-            'parent_id.required'        => 'Please select parent category .',
+            'parent_id.required'        => 'Please select parent category.',
             'upload_photo.required'     => 'Please upload ' . $this->attributeName . ' image.',
             'upload_photo.mimes'        => 'Please upload valid image type.',
             'upload_photo.required_if'  => 'Please upload photo.',
@@ -75,7 +75,6 @@ class BaseFormRequest extends FormRequest
             'confirm_password.numeric'  => 'Confirm_password must be numeric.',
             'confirm_password.min'      => 'Confirm password must be at least 6 character.',
             'confirm_password.same'     => 'The password and confirm password must be same.',
-
         ];
     }
 }
