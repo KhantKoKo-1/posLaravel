@@ -15,15 +15,15 @@ return new class extends Migration
         Schema::create('order_detail', function (Blueprint $table) {
             $table->id();
             $table->unsignedInteger('quantity');
-            $table->unsignedInteger('original_amount')->default(0);
-            $table->unsignedInteger('discount_amount')->default(0);
-            $table->unsignedInteger('sub_total')->default(0);
+            $table->unsignedInteger('original_amount')->nullable();
+            $table->unsignedInteger('discount_amount')->nullable();
+            $table->unsignedInteger('sub_total')->nullable();
             $table->unsignedInteger('order_id');
             $table->unsignedInteger('item_id');
             $table->tinyInteger('status')->default(0)->comment('0 (unpaid) 1 (paid) 2 (cancel)');
             $table->unsignedInteger('created_by');
             $table->unsignedInteger('updated_by');
-            $table->unsignedInteger('deleted_by')->default(0);
+            $table->unsignedInteger('deleted_by')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

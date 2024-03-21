@@ -20,10 +20,10 @@ return new class extends Migration
             $table->unsignedInteger('quantity')->nullable();
             $table->string('code_no',20)->nullable();
             $table->string('image',150);
-            $table->tinyInteger('status')->default(0);
+            $table->tinyInteger('status')->nullable();
             $table->unsignedInteger('created_by');
             $table->unsignedInteger('updated_by');
-            $table->unsignedInteger('deleted_by')->default(0);
+            $table->unsignedInteger('deleted_by')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

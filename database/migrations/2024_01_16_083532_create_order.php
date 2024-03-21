@@ -14,14 +14,14 @@ return new class extends Migration
     {
         Schema::create('order', function (Blueprint $table) {
             $table->id();
-            $table->unsignedInteger('shift_id');
-            $table->unsignedInteger('payment')->default(0);
-            $table->unsignedInteger('refund')->default(0);
-            $table->unsignedInteger('total_amount')->default(0);
+            $table->tinyInteger('shift_id');
+            $table->unsignedInteger('payment')->nullable();
+            $table->unsignedInteger('refund')->nullable();
+            $table->unsignedInteger('total_amount')->nullable();
             $table->tinyInteger('status')->default(0);
             $table->unsignedInteger('created_by');
             $table->unsignedInteger('updated_by');
-            $table->unsignedInteger('deleted_by')->default(0);
+            $table->unsignedInteger('deleted_by')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

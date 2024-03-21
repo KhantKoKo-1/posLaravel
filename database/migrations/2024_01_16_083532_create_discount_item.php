@@ -19,7 +19,7 @@ return new class extends Migration
             $table->tinyInteger('status')->default(0);
             $table->unsignedInteger('created_by');
             $table->unsignedInteger('updated_by');
-            $table->unsignedInteger('deleted_by')->default(0);
+            $table->unsignedInteger('deleted_by')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

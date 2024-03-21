@@ -16,10 +16,12 @@ return new class extends Migration
             $table->id();
             $table->timestamp('start_date_time')->nullable();
             $table->timestamp('end_date_time')->nullable();
+            $table->integer('refund');
+            $table->integer('total_sale_amount')->nullable();
             $table->tinyInteger('status')->default(0);
             $table->unsignedInteger('created_by');
             $table->unsignedInteger('updated_by');
-            $table->unsignedInteger('deleted_by')->default(0);
+            $table->unsignedInteger('deleted_by')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });
