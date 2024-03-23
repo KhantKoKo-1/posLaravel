@@ -30,8 +30,8 @@ class ItemStoreRequest extends BaseFormRequest
                                 }),
                              ],
             'category_id'  => ['required'],
-            'price'        => ['required'],
-            'quantity'     => ['required'],
+            'price'        => ['required','numeric','max:9'],
+            'quantity'     => ['required','numeric','max:9'],
             'upload_photo' => ['required', 'image', 'mimes:jpeg,png,jpg,gif'],
         ];
     }

@@ -57,7 +57,7 @@
                                 <label for="price" class="col-form-label col-md-3 col-sm-3  label-align">Price<span
                                         class="required">*</span></label>
                                 <div class="col-md-6 col-sm-6">
-                                    <input id="name" type="number" class="form-control" name="price"
+                                    <input id="name" type="text" class="form-control" name="price"
                                         value="{{ old('price', isset($item) ? $item->price : '') }}" />
                                     @if ($errors->has('price'))
                                         <span class="errorMessage">{{ $errors->first('price') }}</span>
@@ -68,7 +68,7 @@
                                 <label for="quantity" class="col-form-label col-md-3 col-sm-3  label-align">Quantity<span
                                         class="required">*</span></label>
                                 <div class="col-md-6 col-sm-6">
-                                    <input id="quantity" type="number" class="form-control" name="quantity"
+                                    <input id="quantity" type="text" class="form-control" name="quantity"
                                         value="{{ old('quantity', isset($item) ? $item->quantity : '') }}" />
                                     @if ($errors->has('quantity'))
                                         <span class="errorMessage">{{ $errors->first('quantity') }}</span>
@@ -144,6 +144,20 @@
 
     <!-- jquery is here -->
     <script>
+        $(document).ready(function(){
+            $('#price').on('input',function(){
+                var price = $(this).val();
+                price = price.replace(/\D/g, '');
+                price = price.substring(0, 9);
+                $(this).val(price);
+            });
+            $('#quantity').on('input',function(){
+                var quantity = $(this).val();
+                quantity = quantity.replace(/\D/g, '');
+                quantity = quantity.substring(0, 9);
+                $(this).val(quantity);
+            });
+        });
         function fileInput() {
             $('#fileInput').click();
         }

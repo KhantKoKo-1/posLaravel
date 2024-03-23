@@ -2094,7 +2094,9 @@ ul.row, ul.row-sm {
   font-size: 18px;
   font-weight: bold;
   margin-right: 5px;
-  display: block; }
+  display: block; 
+  text-align: right;
+}
 
 /* ====================== block ==================== */
 .box {
