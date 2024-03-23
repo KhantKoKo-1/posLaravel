@@ -23,18 +23,22 @@ class ShiftRepository implements ShiftRepositoryInterface
 
     public function selectAllShift()
     {
-        $shifts = Shift::select('id', 'start_date_time', 'end_date_time')
+        $shifts = Shift::select('id', 'start_date_time', 'end_date_time','refund')
             ->whereNull('deleted_at')
             ->orderByDesc('id')
             ->paginate(10);
         return $shifts;
     }
 
-    public function startShift()
+    public function startShift(array $data)
     {
-        $data = ['start_date_time' => now()];
-        $ins_data = Utility::saveCreated((array) $data);
-        $result = Shift::create($ins_data);
+
+        $ins_data = ['start_date_time' => now()];
+        $ins_data['refund'] = $data['refund'];
+
+        $shift_start = Utility::saveCreated((array) $ins_data);
+
+        $result = Shift::create($shift_start);
         if ($result) {
             $response = ReturnMessage::OK;
         } else {
@@ -62,20 +66,20 @@ class ShiftRepository implements ShiftRepositoryInterface
         $orders = Order::selectRaw('CONCAT("' . $shift_id . '", "-", id, "-", DATE_FORMAT(created_at, "%Y%m%d")) as order_no')
                 ->addSelect(
                     DB::raw("TIME(created_at) AS order_time"),
-                    DB::raw("CASE 
+                    DB::raw("CASE
                             WHEN payment = 0 THEN 'unpaid'
                             ELSE payment
                         END AS payment"),
-                    DB::raw("CASE 
+                    DB::raw("CASE
                             WHEN payment = 0 AND refund = 0 THEN 'unpaid'
                             WHEN refund = 0 THEN '0'
                             ELSE refund
                         END AS refund"),
-                    DB::raw("CASE 
-                            WHEN status = 0 THEN 'unpaid' 
-                            WHEN status = 1 THEN 'paid' 
-                            WHEN status = 2 THEN 'cancelled' 
-                            ELSE 'unknown' 
+                    DB::raw("CASE
+                            WHEN status = 0 THEN 'unpaid'
+                            WHEN status = 1 THEN 'paid'
+                            WHEN status = 2 THEN 'cancelled'
+                            ELSE 'unknown'
                         END AS status"),
                     'total_amount'
                 )

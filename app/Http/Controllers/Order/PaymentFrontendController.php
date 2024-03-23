@@ -43,12 +43,13 @@ class PaymentFrontendController extends Controller
             abort(500);
         }
     }
-    
+
     public function storePayment(StorePaymentRequest $request)
     {
         $screen = "Show Store Payment From PaymentFrontendController";
         try {
             $response = $this->paymentRepository->storePayment((array) $request->all());
+
             if ($response == '200') {
                 $queryLog = DB::getQueryLog();
                 Utility::saveDebugLog($screen, $queryLog);

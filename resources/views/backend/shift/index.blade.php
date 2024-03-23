@@ -14,6 +14,12 @@
                         <div>
                             <form action="" id="shift" method="POST">
                                 @csrf
+
+                                <div class="form-group">
+                                    <label for="refund">Refund Amount:</label>
+                                    <input type="number" class="form-control" id="refund" name="refund"
+                                        placeholder="Enter refund amount">
+                                </div>
                                 <input type="hidden" name="id" value='' />
                                 <button type="button" class="btn btn-primary btn-lg"
                                     onclick="confirmBox('Do you want to open shift?','shift',event)"
@@ -39,6 +45,7 @@
                                             </th>
                                             <th class="column-title">Start Date Time </th>
                                             <th class="column-title">End Date Time </th>
+                                            <th class="column-title col-2"> Refund </th>
                                             <th class="column-title col-2"> Process </th>
                                             <th class="column-title no-link last"><span class="nobr">Action</span>
                                             </th>
@@ -56,6 +63,7 @@
                                                 </td>
                                                 <td class=" ">{{ $shift->start_date_time }}</td>
                                                 <td class=" ">{{ $shift->end_date_time }}</td>
+                                                <td class=" ">{{ $shift->refund }}</td>
                                                 <td class=" ">
                                                     <span class="badge badge-primary"
                                                         style="display: {{ $shift->end_date_time == 0 ? 'block' : 'none' }}">open</span>

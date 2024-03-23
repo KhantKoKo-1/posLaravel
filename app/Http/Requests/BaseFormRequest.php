@@ -75,6 +75,8 @@ class BaseFormRequest extends FormRequest
             'confirm_password.numeric'  => 'Confirm_password must be numeric.',
             'confirm_password.min'      => 'Confirm password must be at least 6 character.',
             'confirm_password.same'     => 'The password and confirm password must be same.',
+
+            'refund.required'           => 'Please fill refund amount.'
         ];
     }
 }

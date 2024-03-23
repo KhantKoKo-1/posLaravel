@@ -2,15 +2,16 @@
 
 namespace App\Http\Controllers\Shift;
 
-use App\Exports\DownloadOrders;
-use App\Http\Controllers\Controller;
-use App\Http\Requests\OrderListByShiftRequest;
-use App\Http\Requests\ShiftCheckRequest;
-use App\Repositories\Shift\ShiftRepositoryInterface;
 use App\Utility;
 use Illuminate\Http\Request;
+use App\Exports\DownloadOrders;
 use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\Controller;
 use Maatwebsite\Excel\Facades\Excel;
+use App\Http\Requests\ShiftCheckRequest;
+use App\Http\Requests\ShiftStartRequest;
+use App\Http\Requests\OrderListByShiftRequest;
+use App\Repositories\Shift\ShiftRepositoryInterface;
 
 class ShiftController extends Controller
 {
@@ -37,11 +38,12 @@ class ShiftController extends Controller
         }
     }
 
-    public function startShift()
+    public function startShift(Request $request)
     {
+
         $screen = "Start Shift Method !!";
         try {
-            $response = $this->shiftRepository->startShift();
+            $response = $this->shiftRepository->startShift((array) $request->all());
             if ($response == '200') {
                 $queryLog = DB::getQueryLog();
                 Utility::saveDebugLog($screen, $queryLog);

@@ -14,6 +14,7 @@ class Shift extends Model
         'id',
         'start_date_time',
         'end_date_time',
+        'refund',
         'created_by',
         'updated_by'
     ];
