@@ -30,7 +30,7 @@ class OrderFrontendController extends Controller
     private $orderRepository;
     private $settingRepository;
 
-    public function __construct(CategoryRepositoryInterface $categoryRepository, ItemRepositoryInterface $itemRepository, OrderRepositoryInterface $orderRepository,SettingRepositoryInterface $settingRepository)
+    public function __construct(CategoryRepositoryInterface $categoryRepository, ItemRepositoryInterface $itemRepository, OrderRepositoryInterface $orderRepository, SettingRepositoryInterface $settingRepository)
     {
         DB::connection()->enableQueryLog();
         $this->categoryRepository = $categoryRepository;

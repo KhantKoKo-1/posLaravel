@@ -14,12 +14,16 @@ app.controller("myCtrl", function ($scope, $http) {
     $scope.totalPrice = 0;
     $scope.totalDiscount = 0;
     $scope.searchData = "";
+    $scope.originalQuantity = [];
     $scope.init = function ($id) {
         $scope.fetchCategory(0);
         $scope.fetchAllItem();
         if ($id != 0) {
             $scope.fetchOrderItems($id);
         }
+        let orderDetailId = localStorage.getItem("orderDetailId");
+        let quantity = localStorage.getItem(`quantity`);
+        console.log(quantity);
     };
 
     $scope.getChildCategory = function (parent_id) {
@@ -247,10 +251,15 @@ app.controller("myCtrl", function ($scope, $http) {
             function (response) {
                 if (response.status == 200) {
                     $scope.itemDatas = response.data.data;
+                    console.log($scope.itemDatas);
                     $scope.itemDatas.map(function (item) {
+                        var itemData = {
+                            id: item.id,
+                            quantity: item.quantity,
+                        };
+                        $scope.originalQuantity.push(itemData);
                         $scope.subDiscount[item.id] = item.discount_amount;
                     });
-
                     for (i = 0; i < $scope.itemDatas.length; i++) {
                         $scope.itemDatas[i].discount_amount *=
                             $scope.itemDatas[i].quantity;
@@ -274,6 +283,7 @@ app.controller("myCtrl", function ($scope, $http) {
             sub_total: $scope.subTotal,
             shift_id: shift_id,
             order_id: orderId,
+            original_qty: $scope.originalQuantity,
         };
         const url = base_url + "api/order-edit";
         $http

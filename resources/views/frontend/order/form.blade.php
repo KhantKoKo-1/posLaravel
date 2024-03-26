@@ -84,9 +84,12 @@
                                     <td class="text-center">
                                         <div class="m-btn-group m-btn-group--pill btn-group mr-2" role="group"
                                             aria-label="...">
-                                            <button type="button" ng-class="{ 'm-btn btn btn-sm btn-primary': itemData.quantity != 1, 'm-btn btn btn-sm btn-default': itemData.quantity == 1 }" ng-click="itemQuantity('minus',itemData.id)"><i
+                                            <button type="button"
+                                                ng-class="{ 'm-btn btn btn-sm btn-primary': itemData.quantity != 1, 'm-btn btn btn-sm btn-default': itemData.quantity == 1 }"
+                                                ng-click="itemQuantity('minus',itemData.id)"><i
                                                     class="fa fa-minus fa-sm"></i></button>
-                                            <button style="font-weight: bold; color: #000;" type="button" class="m-btn btn btn-sm btn-default"
+                                            <button style="font-weight: bold; color: #000;" type="button"
+                                                class="m-btn btn btn-sm btn-default"
                                                 disabled>@{{ itemData.quantity }}</button>
                                             <button type="button" class="m-btn btn btn-sm btn-danger"
                                                 ng-click="itemQuantity('plus',itemData.id)"><i
@@ -95,17 +98,17 @@
                                     </td>
                                     <td>
                                         <div class="price-wrap">
-                                            <var class="price">@{{ itemData.price }}</var>
+                                            <var class="text-right price">@{{ itemData.price }}</var>
                                         </div> <!-- price-wrap .// -->
                                     </td>
                                     <td>
                                         <div class="price-wrap">
-                                            <var class="price">@{{ itemData.discount_amount }}</var>
+                                            <var class="text-right price">@{{ itemData.discount_amount }}</var>
                                         </div> <!-- price-wrap .// -->
                                     </td>
                                     <td>
                                         <div class="price-wrap">
-                                            <var class="price">@{{ itemData.total_amount }}</var>
+                                            <var class="text-right price">@{{ itemData.total_amount }}</var>
                                         </div> <!-- price-wrap .// -->
                                     </td>
                                     <td class="text-right">

@@ -19,25 +19,25 @@ class OrderRepository implements OrderRepositoryInterface
     {
         $date = Carbon::now()->format('Y-m-d');
         $item = Item::select('item.id', 'item.name', 'item.price', 'item.code_no', 'item.image')
-                    ->where('item.id', '=', $item_id)
-                    ->where('item.status', '=', Constant::ENABLE_STATUS)
-                    ->whereNull('item.deleted_at')
-                    ->first();
+            ->where('item.id', '=', $item_id)
+            ->where('item.status', '=', Constant::ENABLE_STATUS)
+            ->whereNull('item.deleted_at')
+            ->first();
         $discount_amount = DiscountItem::select(
-                        DB::raw('CASE
+            DB::raw('CASE
                                     WHEN discount_promotion.percentage IS NULL THEN discount_promotion.amount
                                     ELSE discount_promotion.percentage / 100 * ' . $item->price . '
                                 END AS discount_amount')
-                        )
-                        ->leftJoin('discount_promotion', 'discount_item.discount_id', '=', 'discount_promotion.id')
-                        ->where('discount_item.item_id', '=', $item_id)
-                        ->where('discount_promotion.start_date', '<=', $date)
-                        ->where('discount_promotion.end_date', '>=', $date)
-                        ->where('discount_item.status', '=', Constant::ENABLE_STATUS)
-                        ->where('discount_promotion.status', '=', Constant::ENABLE_STATUS)
-                        ->whereNull('discount_item.deleted_at')
-                        ->whereNull('discount_promotion.deleted_at')
-                        ->first();
+        )
+            ->leftJoin('discount_promotion', 'discount_item.discount_id', '=', 'discount_promotion.id')
+            ->where('discount_item.item_id', '=', $item_id)
+            ->where('discount_promotion.start_date', '<=', $date)
+            ->where('discount_promotion.end_date', '>=', $date)
+            ->where('discount_item.status', '=', Constant::ENABLE_STATUS)
+            ->where('discount_promotion.status', '=', Constant::ENABLE_STATUS)
+            ->whereNull('discount_item.deleted_at')
+            ->whereNull('discount_promotion.deleted_at')
+            ->first();
         if (!isset($discount_amount)) {
             $item['discount_amount'] = 0;
         } else {
@@ -90,6 +90,14 @@ class OrderRepository implements OrderRepositoryInterface
 
     public function updateOrder(array $data)
     {
+        $original_qtys = $data['original_qty'];
+        foreach ($original_qtys as $original_qty) {
+            $original_item = Item::where('id', $original_qty['id'])
+                ->whereNull('deleted_at')
+                ->first();
+            $original_item['quantity'] += $original_qty['quantity'];
+            $original_item->save();
+        }
         $order_id = $data['order_id'];
         $update_form = Order::where('id', $order_id)
             ->whereNull('deleted_at')
@@ -118,6 +126,13 @@ class OrderRepository implements OrderRepositoryInterface
                 $ins_item_data['order_id'] = $order_id;
                 $item_res = OrderDetail::create($ins_item_data);
                 if ($item_res) {
+                    $item = Item::find($item_data['id']);
+                    if ($item) {
+                        $item->quantity -= $item_data['quantity'];
+                        $item->save();
+                    } else {
+                        throw new \Exception("Item with ID {$item_data['id']} not found.");
+                    }
                     $response = ReturnMessage::OK;
                     DB::commit();
                 } else {
